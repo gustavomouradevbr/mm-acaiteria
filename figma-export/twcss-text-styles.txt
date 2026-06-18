@@ -1,0 +1,406 @@
+// Delivery aberto agora
+text-lime-500
+text-xs
+font-normal
+font-['Share_Tech_Mono']
+uppercase
+leading-4
+tracking-wider
+---
+// 🔥 O Açaí que<br/>
+text-gray-100
+text-8xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-[96px]
+---
+// virou febre<br/>
+text-fuchsia-700
+text-8xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-[96px]
+---
+// no bairro
+text-gray-100
+text-8xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-[96px]
+---
+// Seja para o pré-treino, pós-treino ou aquele momento de recarregar as energias, a 
+text-violet-300
+text-lg
+font-normal
+font-['Barlow']
+leading-7
+---
+// MM Açaiteria
+text-gray-100
+text-lg
+font-bold
+font-['Barlow']
+leading-7
+---
+//  entrega sabor, qualidade e açaí de verdade...
+text-violet-300
+text-lg
+font-normal
+font-['Barlow']
+leading-7
+---
+// ⚡ Quero Minha Dose de Energia
+text-white
+text-xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-7
+tracking-wide
+---
+// scroll
+text-gray-100
+text-xs
+font-normal
+font-['Share_Tech_Mono']
+uppercase
+leading-4
+tracking-wider
+---
+// Entrega expressa
+text-gray-100
+text-sm
+font-semibold
+font-['Barlow']
+leading-5
+---
+// em até 40 minutos
+text-zinc-400
+text-xs
+font-normal
+font-['Barlow']
+leading-4
+---
+// Açaí 100% natural
+text-gray-100
+text-sm
+font-semibold
+font-['Barlow']
+leading-5
+---
+// sem conservantes
+text-zinc-400
+text-xs
+font-normal
+font-['Barlow']
+leading-4
+---
+// Porções generosas
+text-gray-100
+text-sm
+font-semibold
+font-['Barlow']
+leading-5
+---
+// 300ml a 1L
+text-zinc-400
+text-xs
+font-normal
+font-['Barlow']
+leading-4
+---
+// 4.9 ⭐ no Google
+text-gray-100
+text-sm
+font-semibold
+font-['Barlow']
+leading-5
+---
+// +800 avaliações
+text-zinc-400
+text-xs
+font-normal
+font-['Barlow']
+leading-4
+---
+// Menu
+text-lime-500
+text-xs
+font-normal
+font-['Share_Tech_Mono']
+uppercase
+leading-4
+tracking-wider
+---
+// Nossos Combos<br/>
+text-gray-100
+text-5xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-[48px]
+---
+// Favoritos
+text-fuchsia-700
+text-5xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-[48px]
+---
+// Montados por nutricionistas parceiros para maximizar seu treino.
+text-zinc-400
+text-sm
+font-normal
+font-['Barlow']
+leading-5
+---
+// Pré-treino
+text-zinc-400
+text-sm
+font-semibold
+font-['Barlow_Condensed']
+uppercase
+leading-5
+tracking-tight
+---
+// Pós-treino
+text-zinc-950
+text-sm
+font-semibold
+font-['Barlow_Condensed']
+uppercase
+leading-5
+tracking-tight
+---
+// Clássico
+text-zinc-400
+text-sm
+font-semibold
+font-['Barlow_Condensed']
+uppercase
+leading-5
+tracking-tight
+---
+// Recovery Bowl
+text-gray-100
+text-4xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-10
+---
+// Açaí + whey protein + frutas vermelhas + aveia + coco ralado
+text-violet-300
+text-base
+font-normal
+font-['Barlow']
+leading-6
+---
+// 480 kcal
+text-lime-500
+text-sm
+font-normal
+font-['Share_Tech_Mono']
+leading-5
+---
+//  Pedir esse
+text-zinc-950
+text-sm
+font-bold
+font-['Barlow_Condensed']
+uppercase
+leading-5
+---
+// O que falam de nós
+text-fuchsia-700
+text-xs
+font-normal
+font-['Share_Tech_Mono']
+uppercase
+leading-4
+tracking-wider
+---
+// "Melhor açaí que já comi! Chegou quentão e fresquinho."
+text-violet-300
+text-sm
+font-normal
+font-['Barlow']
+leading-6
+---
+// — Ana Beatriz
+text-zinc-400
+text-xs
+font-semibold
+font-['Barlow']
+leading-4
+---
+// "Pré-treino perfeito. Já virei cliente fixo toda semana."
+text-violet-300
+text-sm
+font-normal
+font-['Barlow']
+leading-6
+---
+// — Marcos V.
+text-zinc-400
+text-xs
+font-semibold
+font-['Barlow']
+leading-4
+---
+// "Tamanho generoso e preço justo. Vale muito cada centavo!"
+text-violet-300
+text-sm
+font-normal
+font-['Barlow']
+leading-6
+---
+// — Lara F.
+text-zinc-400
+text-xs
+font-semibold
+font-['Barlow']
+leading-4
+---
+// Sua energia<br/>
+text-gray-100
+text-7xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-[72px]
+---
+// começa aqui
+text-lime-500
+text-7xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-[72px]
+---
+// Peça pelo WhatsApp e receba na sua porta em até 40 minutos.
+text-zinc-400
+text-base
+font-normal
+font-['Barlow']
+leading-6
+---
+// ⚡ Quero Minha Dose de Energia
+text-white
+text-xl
+font-black
+font-['Barlow_Condensed']
+uppercase
+leading-7
+tracking-wide
+---
+// MM
+text-fuchsia-700
+text-2xl
+font-black
+font-['Barlow_Condensed']
+leading-8
+---
+// .
+text-lime-500
+text-2xl
+font-black
+font-['Barlow_Condensed']
+leading-8
+---
+// AÇAITERIA
+text-fuchsia-700
+text-2xl
+font-black
+font-['Barlow_Condensed']
+leading-8
+---
+// Sabor, qualidade e açaí de verdade direto na sua porta.
+text-zinc-400
+text-xs
+font-normal
+font-['Barlow']
+leading-5
+---
+// 📍 Avenida São Mateus, 345<br/>Iputinga, Recife – PE
+text-violet-300
+text-sm
+font-normal
+font-['Barlow']
+leading-5
+---
+// Terça a domingo<br/>
+text-violet-300
+text-sm
+font-normal
+font-['Barlow']
+leading-5
+---
+// 17h às 23h
+text-gray-100
+text-sm
+font-bold
+font-['Barlow']
+leading-5
+---
+// Redes
+text-zinc-400
+text-xs
+font-normal
+font-['Share_Tech_Mono']
+uppercase
+leading-4
+tracking-wider
+---
+// @mmacaiteria
+text-violet-300
+text-sm
+font-normal
+font-['Barlow']
+leading-5
+---
+// WhatsApp
+text-violet-300
+text-sm
+font-normal
+font-['Barlow']
+leading-5
+---
+// © 2024 MM Açaiteria · Feito com 💜 em Recife
+text-zinc-600
+text-xs
+font-normal
+font-['Share_Tech_Mono']
+leading-4
+---
+// MM
+text-fuchsia-700
+text-2xl
+font-black
+font-['Barlow_Condensed']
+leading-8
+---
+// .
+text-lime-500
+text-2xl
+font-black
+font-['Barlow_Condensed']
+leading-8
+---
+// AÇAITERIA
+text-fuchsia-700
+text-2xl
+font-black
+font-['Barlow_Condensed']
+leading-8
+---
+//  Pedir Agora
+text-white
+text-sm
+font-semibold
+font-['Barlow']
+leading-5

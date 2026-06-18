@@ -1,0 +1,345 @@
+<div class="w-[1010px] h-[2888px] relative bg-stone-950 inline-flex flex-col justify-start items-start">
+    <div class="w-[1010px] h-[584px] flex flex-col justify-start items-start">
+        <div class="w-[1010px] h-[2888px] min-h-[584px] bg-stone-950 flex flex-col justify-start items-start overflow-hidden">
+            <div class="self-stretch h-[784.50px] min-h-[584px] px-5 pt-24 pb-16 flex flex-col justify-center items-center overflow-hidden">
+                <div class="size- pb-6 flex flex-col justify-start items-start">
+                    <div class="w-52 h-7 relative">
+                        <div class="h-7 px-4 py-1.5 left-0 top-0 absolute bg-lime-500/10 rounded-full outline outline-1 outline-offset-[-1px] outline-lime-500/30 inline-flex justify-start items-center gap-2">
+                            <div class="size-1.5 relative opacity-60 bg-lime-500 rounded-full shadow-[0px_0px_6px_0px_rgba(57,255,20,1.00)]"></div>
+                            <div class="text-center justify-start text-lime-500 text-xs font-normal font-['Share_Tech_Mono'] uppercase leading-4 tracking-wider">Delivery aberto agora</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="size- pb-6 flex flex-col justify-start items-start">
+                    <div class="w-[537.13px] h-72 max-w-[768px] relative">
+                        <div class="left-[18px] top-0 absolute text-center justify-start"><span class="text-gray-100 text-8xl font-black font-['Barlow_Condensed'] uppercase leading-[96px]">🔥 O Açaí que<br/></span><span class="text-fuchsia-700 text-8xl font-black font-['Barlow_Condensed'] uppercase leading-[96px]">virou febre<br/></span><span class="text-gray-100 text-8xl font-black font-['Barlow_Condensed'] uppercase leading-[96px]">no bairro</span></div>
+                    </div>
+                </div>
+                <div class="size- pb-10 flex flex-col justify-start items-start">
+                    <div class="w-[576px] h-14 max-w-[576px] relative">
+                        <div class="w-[576px] left-0 top-[-1px] absolute text-center justify-start"><span class="text-violet-300 text-lg font-normal font-['Barlow'] leading-7">Seja para o pré-treino, pós-treino ou aquele momento de recarregar as energias, a </span><span class="text-gray-100 text-lg font-bold font-['Barlow'] leading-7">MM Açaiteria</span><span class="text-violet-300 text-lg font-normal font-['Barlow'] leading-7"> entrega sabor, qualidade e açaí de verdade...</span></div>
+                    </div>
+                </div>
+                <div class="size- px-8 py-4 bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-full shadow-[0px_0px_60px_0px_rgba(151,80,175,0.20)] shadow-[0px_0px_30px_0px_rgba(151,80,175,0.60)] shadow-[inset_0px_1px_0px_0px_rgba(255,255,255,0.15)] inline-flex justify-start items-center gap-3">
+                    <div class="size-5 relative overflow-hidden">
+                        <div class="size-4 left-[2.50px] top-[1.66px] absolute bg-white outline outline-[1.67px] outline-offset-[-0.83px] outline-white"></div>
+                    </div>
+                    <div class="text-center justify-start text-white text-xl font-black font-['Barlow_Condensed'] uppercase leading-7 tracking-wide">⚡ Quero Minha Dose de Energia</div>
+                </div>
+                <div class="size- pt-16 flex flex-col justify-start items-start">
+                    <div class="size- opacity-40 flex flex-col justify-start items-center gap-1">
+                        <div class="w-12 h-4 relative">
+                            <div class="left-[1px] top-0 absolute text-center justify-start text-gray-100 text-xs font-normal font-['Share_Tech_Mono'] uppercase leading-4 tracking-wider">scroll</div>
+                        </div>
+                        <div class="size-4 relative flex flex-col justify-start items-start">
+                            <div class="size-4 left-0 top-[-3.25px] absolute overflow-hidden">
+                                <div class="w-2 h-1 left-[4px] top-[6px] absolute outline outline-[1.33px] outline-offset-[-0.67px] outline-gray-100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="self-stretch px-5 py-10 border-t border-b border-fuchsia-700/20 flex flex-col justify-start items-start">
+                <div class="w-full h-24 max-w-[1024px] relative">
+                    <div class="w-56 h-24 left-0 top-0 absolute inline-flex flex-col justify-start items-center gap-2">
+                        <div class="size- pb-1 flex flex-col justify-start items-start">
+                            <div class="size-11 bg-fuchsia-700/20 rounded-2xl outline outline-1 outline-offset-[-1px] outline-fuchsia-700/30 inline-flex justify-center items-center">
+                                <div class="size-5 relative overflow-hidden">
+                                    <div class="size-4 left-[2.50px] top-[1.66px] absolute outline outline-[1.67px] outline-offset-[-0.83px] outline-fuchsia-700"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-28 h-5 relative">
+                            <div class="left-0 top-[-1px] absolute text-center justify-start text-gray-100 text-sm font-semibold font-['Barlow'] leading-5">Entrega expressa</div>
+                        </div>
+                        <div class="w-24 h-4 relative">
+                            <div class="left-0 top-0 absolute text-center justify-start text-zinc-400 text-xs font-normal font-['Barlow'] leading-4">em até 40 minutos</div>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 left-[248.50px] top-0 absolute inline-flex flex-col justify-start items-center gap-2">
+                        <div class="size- pb-1 flex flex-col justify-start items-start">
+                            <div class="size-11 bg-fuchsia-700/20 rounded-2xl outline outline-1 outline-offset-[-1px] outline-fuchsia-700/30 inline-flex justify-center items-center">
+                                <div class="size-5 relative overflow-hidden">
+                                    <div class="size-3.5 left-[3.32px] top-[1.67px] absolute outline outline-[1.67px] outline-offset-[-0.83px] outline-fuchsia-700"></div>
+                                    <div class="w-2.5 h-2 left-[1.67px] top-[10px] absolute outline outline-[1.67px] outline-offset-[-0.83px] outline-fuchsia-700"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-28 h-5 relative">
+                            <div class="left-0 top-[-1px] absolute text-center justify-start text-gray-100 text-sm font-semibold font-['Barlow'] leading-5">Açaí 100% natural</div>
+                        </div>
+                        <div class="w-24 h-4 relative">
+                            <div class="left-[-1px] top-0 absolute text-center justify-start text-zinc-400 text-xs font-normal font-['Barlow'] leading-4">sem conservantes</div>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 left-[497px] top-0 absolute inline-flex flex-col justify-start items-center gap-2">
+                        <div class="size- pb-1 flex flex-col justify-start items-start">
+                            <div class="size-11 bg-fuchsia-700/20 rounded-2xl outline outline-1 outline-offset-[-1px] outline-fuchsia-700/30 inline-flex justify-center items-center">
+                                <div class="size-5 relative overflow-hidden">
+                                    <div class="w-3 h-4 left-[4.17px] top-[2.50px] absolute outline outline-[1.67px] outline-offset-[-0.83px] outline-fuchsia-700"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-28 h-5 relative">
+                            <div class="left-0 top-[-1px] absolute text-center justify-start text-gray-100 text-sm font-semibold font-['Barlow'] leading-5">Porções generosas</div>
+                        </div>
+                        <div class="w-14 h-4 relative">
+                            <div class="left-0 top-0 absolute text-center justify-start text-zinc-400 text-xs font-normal font-['Barlow'] leading-4">300ml a 1L</div>
+                        </div>
+                    </div>
+                    <div class="w-56 h-24 left-[745.50px] top-0 absolute inline-flex flex-col justify-start items-center gap-2">
+                        <div class="size- pb-1 flex flex-col justify-start items-start">
+                            <div class="size-11 bg-fuchsia-700/20 rounded-2xl outline outline-1 outline-offset-[-1px] outline-fuchsia-700/30 inline-flex justify-center items-center">
+                                <div class="size-5 relative overflow-hidden">
+                                    <div class="size-4 left-[1.67px] top-[1.67px] absolute outline outline-[1.67px] outline-offset-[-0.83px] outline-fuchsia-700"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-28 h-5 relative">
+                            <div class="left-[3px] top-[-1px] absolute text-center justify-start text-gray-100 text-sm font-semibold font-['Barlow'] leading-5">4.9 ⭐ no Google</div>
+                        </div>
+                        <div class="w-20 h-4 relative">
+                            <div class="left-0 top-0 absolute text-center justify-start text-zinc-400 text-xs font-normal font-['Barlow'] leading-4">+800 avaliações</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="w-[1010px] max-w-[1024px] px-5 py-20 flex flex-col justify-start items-start">
+                <div class="self-stretch inline-flex justify-between items-end">
+                    <div class="w-72 inline-flex flex-col justify-start items-start">
+                        <div class="self-stretch flex flex-col justify-start items-start">
+                            <div class="justify-start text-lime-500 text-xs font-normal font-['Share_Tech_Mono'] uppercase leading-4 tracking-wider">Menu</div>
+                        </div>
+                        <div class="w-72 h-24 pt-2 flex flex-col justify-start items-start">
+                            <div class="justify-start"><span class="text-gray-100 text-5xl font-black font-['Barlow_Condensed'] uppercase leading-[48px]">Nossos Combos<br/></span><span class="text-fuchsia-700 text-5xl font-black font-['Barlow_Condensed'] uppercase leading-[48px]">Favoritos</span></div>
+                        </div>
+                    </div>
+                    <div class="w-80 h-10 max-w-80 relative">
+                        <div class="w-80 left-0 top-[-1px] absolute justify-start text-zinc-400 text-sm font-normal font-['Barlow'] leading-5">Montados por nutricionistas parceiros para maximizar seu treino.</div>
+                    </div>
+                </div>
+                <div class="self-stretch pt-12 flex flex-col justify-start items-start">
+                    <div class="self-stretch h-9 relative">
+                        <div class="size- px-5 py-2 left-0 top-0 absolute bg-white/5 rounded-full outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-center items-center">
+                            <div class="text-center justify-start text-zinc-400 text-sm font-semibold font-['Barlow_Condensed'] uppercase leading-5 tracking-tight">Pré-treino</div>
+                        </div>
+                        <div class="size- px-5 py-2 left-[116.64px] top-0 absolute bg-lime-500 rounded-full shadow-[0px_0px_20px_0px_rgba(57,255,20,0.33)] outline outline-1 outline-offset-[-1px] outline-lime-500 inline-flex flex-col justify-center items-center">
+                            <div class="text-center justify-start text-zinc-950 text-sm font-semibold font-['Barlow_Condensed'] uppercase leading-5 tracking-tight">Pós-treino</div>
+                        </div>
+                        <div class="size- px-5 py-2 left-[233.36px] top-0 absolute bg-white/5 rounded-full outline outline-1 outline-offset-[-1px] outline-white/10 inline-flex flex-col justify-center items-center">
+                            <div class="text-center justify-start text-zinc-400 text-sm font-semibold font-['Barlow_Condensed'] uppercase leading-5 tracking-tight">Clássico</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-stretch pt-8 flex flex-col justify-start items-start">
+                    <div class="self-stretch h-[486px] relative bg-zinc-900 rounded-2xl shadow-[0px_0px_40px_0px_rgba(57,255,20,0.13)] outline outline-1 outline-offset-[-1px] outline-lime-500/20 overflow-hidden">
+                        <div class="size-[484px] left-[1px] top-[1px] absolute bg-zinc-950 inline-flex flex-col justify-start items-start">
+                            <img class="self-stretch h-[484px] relative opacity-90" src="https://placehold.co/484x484" />
+                            <div class="size-[484px] left-0 top-0 absolute bg-gradient-to-br from-lime-500/10 to-black/0 to 60%"></div>
+                        </div>
+                        <div class="size-[484px] p-8 left-[485px] top-[1px] absolute inline-flex flex-col justify-between items-start">
+                            <div class="self-stretch flex flex-col justify-start items-start">
+                                <div class="self-stretch flex flex-col justify-start items-start">
+                                    <div class="justify-start text-gray-100 text-4xl font-black font-['Barlow_Condensed'] uppercase leading-10">Recovery Bowl</div>
+                                </div>
+                                <div class="w-96 h-9 pt-3 flex flex-col justify-start items-start">
+                                    <div class="justify-start text-violet-300 text-base font-normal font-['Barlow'] leading-6">Açaí + whey protein + frutas vermelhas + aveia + coco ralado</div>
+                                </div>
+                            </div>
+                            <div class="self-stretch inline-flex justify-between items-center">
+                                <div class="w-16 h-5 relative">
+                                    <div class="left-0 top-0 absolute justify-start text-lime-500 text-sm font-normal font-['Share_Tech_Mono'] leading-5">480 kcal</div>
+                                </div>
+                                <div class="size- px-6 py-3 bg-lime-500 rounded-full shadow-[0px_0px_20px_0px_rgba(57,255,20,0.33)] flex justify-start items-center gap-2">
+                                    <div class="size-3.5 relative overflow-hidden">
+                                        <div class="w-2.5 h-3 left-[1.75px] top-[1.17px] absolute outline outline-1 outline-offset-[-0.58px] outline-zinc-950"></div>
+                                    </div>
+                                    <div class="justify-start text-zinc-950 text-sm font-bold font-['Barlow_Condensed'] uppercase leading-5"> Pedir esse</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="self-stretch px-5 py-16 bg-zinc-950 flex flex-col justify-start items-start">
+                <div class="self-stretch flex flex-col justify-start items-center">
+                    <div class="w-[896px] max-w-[896px] flex flex-col justify-start items-start">
+                        <div class="self-stretch flex flex-col justify-start items-center">
+                            <div class="text-center justify-start text-fuchsia-700 text-xs font-normal font-['Share_Tech_Mono'] uppercase leading-4 tracking-wider">O que falam de nós</div>
+                        </div>
+                        <div class="self-stretch pt-4 flex flex-col justify-start items-start">
+                            <div class="self-stretch h-36 relative">
+                                <div class="w-72 h-36 p-5 left-0 top-0 absolute bg-zinc-900 rounded-2xl outline outline-1 outline-offset-[-1px] outline-fuchsia-700/20 inline-flex flex-col justify-start items-start">
+                                    <div class="self-stretch inline-flex justify-start items-start gap-0.5">
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                    </div>
+                                    <div class="self-stretch py-3 flex flex-col justify-start items-start">
+                                        <div class="w-60 justify-start text-violet-300 text-sm font-normal font-['Barlow'] leading-6">"Melhor açaí que já comi! Chegou quentão e fresquinho."</div>
+                                    </div>
+                                    <div class="self-stretch h-6 relative">
+                                        <div class="left-0 top-[4px] absolute justify-start text-zinc-400 text-xs font-semibold font-['Barlow'] leading-4">— Ana Beatriz</div>
+                                    </div>
+                                </div>
+                                <div class="w-72 h-36 p-5 left-[304px] top-0 absolute bg-zinc-900 rounded-2xl outline outline-1 outline-offset-[-1px] outline-fuchsia-700/20 inline-flex flex-col justify-start items-start">
+                                    <div class="self-stretch inline-flex justify-start items-start gap-0.5">
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                    </div>
+                                    <div class="self-stretch py-3 flex flex-col justify-start items-start">
+                                        <div class="w-60 justify-start text-violet-300 text-sm font-normal font-['Barlow'] leading-6">"Pré-treino perfeito. Já virei cliente fixo toda semana."</div>
+                                    </div>
+                                    <div class="self-stretch h-6 relative">
+                                        <div class="left-0 top-[4px] absolute justify-start text-zinc-400 text-xs font-semibold font-['Barlow'] leading-4">— Marcos V.</div>
+                                    </div>
+                                </div>
+                                <div class="w-72 h-36 p-5 left-[608px] top-0 absolute bg-zinc-900 rounded-2xl outline outline-1 outline-offset-[-1px] outline-fuchsia-700/20 inline-flex flex-col justify-start items-start">
+                                    <div class="self-stretch inline-flex justify-start items-start gap-0.5">
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                        <div class="size-3 relative overflow-hidden">
+                                            <div class="size-2.5 left-[1px] top-[1px] absolute bg-fuchsia-700 outline outline-1 outline-offset-[-0.50px] outline-fuchsia-700"></div>
+                                        </div>
+                                    </div>
+                                    <div class="self-stretch py-3 flex flex-col justify-start items-start">
+                                        <div class="w-60 justify-start text-violet-300 text-sm font-normal font-['Barlow'] leading-6">"Tamanho generoso e preço justo. Vale muito cada centavo!"</div>
+                                    </div>
+                                    <div class="self-stretch h-6 relative">
+                                        <div class="left-0 top-[4px] absolute justify-start text-zinc-400 text-xs font-semibold font-['Barlow'] leading-4">— Lara F.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="self-stretch h-[460px] relative bg-radial from-fuchsia-700/20 to-black/0 to 70% overflow-hidden">
+                <div class="w-[672px] max-w-[672px] left-[169px] top-[80px] absolute inline-flex flex-col justify-start items-start">
+                    <div class="self-stretch flex flex-col justify-start items-center">
+                        <div class="text-center justify-start"><span class="text-gray-100 text-7xl font-black font-['Barlow_Condensed'] uppercase leading-[72px]">Sua energia<br/></span><span class="text-lime-500 text-7xl font-black font-['Barlow_Condensed'] uppercase leading-[72px]">começa aqui</span></div>
+                    </div>
+                    <div class="w-[672px] h-20 pt-6 pb-10 flex flex-col justify-start items-center">
+                        <div class="text-center justify-start text-zinc-400 text-base font-normal font-['Barlow'] leading-6">Peça pelo WhatsApp e receba na sua porta em até 40 minutos.</div>
+                    </div>
+                    <div class="self-stretch h-16 relative">
+                        <div class="h-16 px-10 py-5 left-[136.88px] top-0 absolute bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-full shadow-[0px_0px_80px_0px_rgba(151,80,175,0.20)] shadow-[0px_0px_40px_0px_rgba(151,80,175,0.70)] inline-flex justify-start items-center gap-3">
+                            <div class="size-5 relative overflow-hidden">
+                                <div class="w-4 h-5 left-[2.75px] top-[1.83px] absolute bg-white outline outline-2 outline-offset-[-0.92px] outline-white"></div>
+                            </div>
+                            <div class="text-center justify-start text-white text-xl font-black font-['Barlow_Condensed'] uppercase leading-7 tracking-wide">⚡ Quero Minha Dose de Energia</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="self-stretch px-5 py-12 bg-zinc-950 border-t border-fuchsia-700/20 flex flex-col justify-start items-start">
+                <div class="w-full h-24 max-w-[1024px] relative">
+                    <div class="w-72 h-24 left-0 top-0 absolute inline-flex flex-col justify-start items-start">
+                        <div class="self-stretch flex flex-col justify-start items-start">
+                            <div class="justify-start"><span class="text-fuchsia-700 text-2xl font-black font-['Barlow_Condensed'] leading-8">MM</span><span class="text-lime-500 text-2xl font-black font-['Barlow_Condensed'] leading-8">.</span><span class="text-fuchsia-700 text-2xl font-black font-['Barlow_Condensed'] leading-8">AÇAITERIA</span></div>
+                        </div>
+                        <div class="w-72 h-8 pt-3 flex flex-col justify-start items-start">
+                            <div class="justify-start text-zinc-400 text-xs font-normal font-['Barlow'] leading-5">Sabor, qualidade e açaí de verdade direto na sua porta.</div>
+                        </div>
+                    </div>
+                    <div class="w-72 left-[334px] top-0 absolute inline-flex flex-col justify-start items-start gap-3">
+                        <div class="self-stretch inline-flex justify-start items-start gap-2">
+                            <div class="size- pt-0.5 flex justify-start items-start">
+                                <div class="size-3.5 relative overflow-hidden">
+                                    <div class="w-2.5 h-3 left-[2.50px] top-[1.25px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                                    <div class="size-1 left-[5.63px] top-[4.38px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                                </div>
+                            </div>
+                            <div class="w-44 h-10 relative">
+                                <div class="left-0 top-[-1px] absolute justify-start text-violet-300 text-sm font-normal font-['Barlow'] leading-5">📍 Avenida São Mateus, 345<br/>Iputinga, Recife – PE</div>
+                            </div>
+                        </div>
+                        <div class="self-stretch inline-flex justify-start items-start gap-2">
+                            <div class="size- pt-0.5 flex justify-start items-start">
+                                <div class="size-3.5 relative overflow-hidden">
+                                    <div class="size-3 left-[1.25px] top-[1.25px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                                    <div class="w-[2.50px] h-[5px] left-[7.50px] top-[3.75px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                                </div>
+                            </div>
+                            <div class="w-24 h-10 relative">
+                                <div class="left-0 top-[-1px] absolute justify-start"><span class="text-violet-300 text-sm font-normal font-['Barlow'] leading-5">Terça a domingo<br/></span><span class="text-gray-100 text-sm font-bold font-['Barlow'] leading-5">17h às 23h</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="w-72 h-24 left-[668px] top-0 absolute inline-flex flex-col justify-start items-start gap-3">
+                        <div class="self-stretch flex flex-col justify-start items-start">
+                            <div class="justify-start text-zinc-400 text-xs font-normal font-['Share_Tech_Mono'] uppercase leading-4 tracking-wider">Redes</div>
+                        </div>
+                        <div class="self-stretch inline-flex justify-start items-center gap-2">
+                            <div class="size-3.5 relative overflow-hidden">
+                                <div class="size-3 left-[1.25px] top-[1.25px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                                <div class="size-[5px] left-[5.03px] top-[4.97px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                                <div class="w-[0.01px] h-0 left-[10.94px] top-[4.06px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                            </div>
+                            <div class="justify-start text-violet-300 text-sm font-normal font-['Barlow'] leading-5">@mmacaiteria</div>
+                        </div>
+                        <div class="self-stretch inline-flex justify-start items-center gap-2">
+                            <div class="size-3.5 relative overflow-hidden">
+                                <div class="size-3 left-[1.32px] top-[1.25px] absolute outline outline-[1.25px] outline-offset-[-0.63px] outline-fuchsia-700"></div>
+                            </div>
+                            <div class="justify-start text-violet-300 text-sm font-normal font-['Barlow'] leading-5">WhatsApp</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="self-stretch pt-10 flex flex-col justify-start items-start">
+                    <div class="w-full max-w-[1024px] pt-6 border-t border-fuchsia-700/10 flex flex-col justify-start items-center">
+                        <div class="text-center justify-start text-zinc-600 text-xs font-normal font-['Share_Tech_Mono'] leading-4">© 2024 MM Açaiteria · Feito com 💜 em Recife</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-[1010px] left-0 top-0 absolute bg-stone-950/90 border-b border-fuchsia-700/25 flex flex-col justify-start items-start">
+        <div class="w-full max-w-[1152px] px-5 py-4 inline-flex justify-between items-center">
+            <div class="w-32 h-8 relative">
+                <div class="left-0 top-[-1px] absolute justify-start"><span class="text-fuchsia-700 text-2xl font-black font-['Barlow_Condensed'] leading-8">MM</span><span class="text-lime-500 text-2xl font-black font-['Barlow_Condensed'] leading-8">.</span><span class="text-fuchsia-700 text-2xl font-black font-['Barlow_Condensed'] leading-8">AÇAITERIA</span></div>
+            </div>
+            <div class="size- px-5 py-2 bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-full shadow-[0px_0px_18px_0px_rgba(151,80,175,0.50)] flex justify-start items-center gap-2">
+                <div class="size-3.5 relative overflow-hidden">
+                    <div class="w-2.5 h-3 left-[1.75px] top-[1.17px] absolute outline outline-1 outline-offset-[-0.58px] outline-white"></div>
+                </div>
+                <div class="justify-start text-white text-sm font-semibold font-['Barlow'] leading-5"> Pedir Agora</div>
+            </div>
+        </div>
+    </div>
+</div>
