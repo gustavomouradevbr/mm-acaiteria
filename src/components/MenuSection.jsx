@@ -1,5 +1,5 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import ProductCard from './ProductCard.jsx';
 
 const MenuSection = () => {
   return (
@@ -47,4 +47,3 @@ const MenuSection = () => {
 };
 
 export default MenuSection;
-
