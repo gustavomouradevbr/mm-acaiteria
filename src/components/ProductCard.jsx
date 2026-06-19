@@ -1,5 +1,4 @@
 import React from 'react';
-import React from 'react';
 import imgAcai from '../assets/image/frutaroxa.jpg';
 
 const ProductCard = ({ title, description, calories }) => {
