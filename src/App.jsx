@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import FeaturesSection from './components/FeaturesSection';
+import AboutSection from './components/AboutSection';
 import MenuSection from './components/MenuSection';
 import TestimonialsSection from './components/TestimonialsSection';
 import CtaSection from './components/CtaSection';
@@ -13,6 +14,7 @@ function App() {
       <main className="flex-grow">
         <HeroSection />
         <FeaturesSection />
+        <AboutSection />
         <MenuSection />
         <TestimonialsSection />
         <CtaSection />
