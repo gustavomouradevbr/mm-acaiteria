@@ -1,26 +1,28 @@
 import React, { useState, useEffect } from 'react';
 
-const CustomizeModal = ({ isOpen, onClose, product, onConfirm }) => {
+// Agora o modal recebe os limitsData lá do App.jsx
+const CustomizeModal = ({ isOpen, onClose, product, onConfirm, limitsData }) => {
   if (!isOpen || !product) return null;
 
-  // Analisa o título E a descrição para caçar a litragem do copo
-  const getLimits = (prod) => {
+  // Caça o limite cruzando o texto do produto com o ID do limite configurado pelo admin
+  const getDynamicLimits = (prod) => {
     const textToSearch = (prod.title + " " + prod.description).toLowerCase();
     
-    // Regras de negócio da MM Açaiteria aplicadas exatamente como solicitado
-    if (textToSearch.includes('250ml')) return { creams: 1, fruits: 1, complements: 2 };
-    if (textToSearch.includes('300ml')) return { creams: 3, fruits: 2, complements: 3 };
-    if (textToSearch.includes('400ml')) return { creams: 3, fruits: 2, complements: 3 };
-    if (textToSearch.includes('500ml')) return { creams: 3, fruits: 3, complements: 4 };
-    if (textToSearch.includes('600ml')) return { creams: 3, fruits: 3, complements: 4 };
-    if (textToSearch.includes('770ml')) return { creams: 2, fruits: 3, complements: 5 };
-    if (textToSearch.includes('1 litro') || textToSearch.includes('1l')) return { creams: 2, fruits: 3, complements: 5 };
+    // Procura na lista de limites do Admin se o ML está no título ou descrição
+    const matchedLimit = limitsData.find(l => textToSearch.includes(l.id));
+    if (matchedLimit) return matchedLimit;
     
-    // Padrão de segurança caso o administrador cadastre um produto sem informar os "ml"
-    return { creams: 3, fruits: 2, complements: 3 }; 
+    // Tratativa específica para o texto "1 litro" que bate com o id "1l" do painel
+    if (textToSearch.includes('1 litro')) {
+      const litroLimit = limitsData.find(l => l.id === '1l');
+      if (litroLimit) return litroLimit;
+    }
+    
+    // Padrão de segurança caso seja um produto sem tamanho definido
+    return { creams: 2, fruits: 2, complements: 3 }; 
   };
 
-  const limits = getLimits(product);
+  const limits = getDynamicLimits(product);
 
   const availableCreams = ['Leite Ninho', 'Nutella Pura', 'Ovomaltine', 'Mousse de Maracujá'];
   const availableFruits = ['Morango Fresco', 'Banana Fatiada', 'Kiwi', 'Manga'];
