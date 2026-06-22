@@ -97,7 +97,7 @@ function App() {
   }, [storeOverride]);
 
   const handleAddToCartIntent = (product) => {
-    if (product.category === 'monteseuacai') {
+    if (product.category !== 'extras') {
       setCustomizingProduct(product);
       setIsCustomizeModalOpen(true);
     } else {
