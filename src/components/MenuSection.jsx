@@ -61,7 +61,7 @@ const categories = [
   { id: 'extras', label: 'Paletas & Bebidas' },
 ];
 
-const MenuSection = () => {
+const MenuSection = ({ onAddToCart }) => {
   const [activeCategory, setActiveCategory] = useState('maispedidos');
 
   const filteredItems = menuData.filter(item => item.category === activeCategory);
@@ -106,12 +106,13 @@ const MenuSection = () => {
       <div className="w-full pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredItems.map((item) => (
           <ProductCard
-            key={item.id}
-            title={item.title}
-            description={item.description}
-            price={item.price}
-            image={item.image}
-          />
+  key={item.id}
+  title={item.title}
+  description={item.description}
+  price={item.price}
+  image={item.image}
+  onAdd={() => onAddToCart(item)}
+/>
         ))}
       </div>
     </section>
