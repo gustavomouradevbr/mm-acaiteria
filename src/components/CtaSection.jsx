@@ -11,7 +11,8 @@ const CtaSection = () => {
         <p className="pt-6 pb-10 text-zinc-400 text-base font-normal font-['Barlow'] leading-6">
           Peça pelo WhatsApp e receba na sua porta em até 40 minutos.
         </p>
-        <button className="px-10 py-5 bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-full shadow-[0px_0px_80px_0px_rgba(151,80,175,0.20)] shadow-[0px_0px_40px_0px_rgba(151,80,175,0.70)] inline-flex justify-start items-center gap-3">
+        {/* A correção foi feita na linha abaixo, unindo as duas sombras: */}
+        <button className="px-10 py-5 bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-full shadow-[0px_0px_80px_0px_rgba(151,80,175,0.20),_0px_0px_40px_0px_rgba(151,80,175,0.70)] inline-flex justify-start items-center gap-3">
           <div className="size-5 relative overflow-hidden">
             <div className="w-4 h-5 left-[2.75px] top-[1.83px] absolute bg-white outline outline-2 outline-offset-[-0.92px] outline-white"></div>
           </div>
@@ -23,4 +24,3 @@ const CtaSection = () => {
 };
 
 export default CtaSection;
-
