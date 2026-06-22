@@ -1,14 +1,14 @@
 import React from 'react';
 
-const HeroSection = () => {
+const HeroSection = ({ isOpenStatus }) => {
   return (
     <section className="w-full min-h-[584px] px-5 pt-24 pb-16 flex flex-col justify-center items-center overflow-hidden">
-      {/* Badge Delivery */}
+      {/* Badge Delivery Dinâmico Sincronizado com o Admin */}
       <div className="pb-6">
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-lime-500/10 rounded-full outline outline-1 outline-offset-[-1px] outline-lime-500/30">
-          <div className="size-1.5 bg-lime-500 rounded-full opacity-60 shadow-[0px_0px_6px_0px_rgba(57,255,20,1.00)]" />
-          <span className="text-xs font-normal text-center text-lime-500 uppercase font-['Share_Tech_Mono'] leading-4 tracking-wider">
-            Delivery aberto agora
+        <div className={`inline-flex items-center gap-2 px-4 py-1.5 rounded-full outline outline-1 outline-offset-[-1px] transition-colors duration-300 ${isOpenStatus ? 'bg-lime-500/10 outline-lime-500/30' : 'bg-red-500/10 outline-red-500/30'}`}>
+          <div className={`size-1.5 rounded-full opacity-60 ${isOpenStatus ? 'bg-lime-500 shadow-[0px_0px_6px_0px_rgba(57,255,20,1.00)]' : 'bg-red-500 shadow-[0px_0px_6px_0px_rgba(255,0,0,1.00)]'}`} />
+          <span className={`text-xs font-normal text-center uppercase font-['Share_Tech_Mono'] leading-4 tracking-wider ${isOpenStatus ? 'text-lime-500' : 'text-red-500'}`}>
+            {isOpenStatus ? 'Delivery aberto agora' : 'Delivery fechado no momento'}
           </span>
         </div>
       </div>
@@ -32,7 +32,7 @@ const HeroSection = () => {
       </div>
 
       {/* Botão CTA */}
-      <button className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-full shadow-[0px_0px_60px_0px_rgba(151,80,175,0.20),0px_0px_30px_0px_rgba(151,80,175,0.60),inset_0px_1px_0px_0px_rgba(255,255,255,0.15)]">
+      <button className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-br from-fuchsia-700 to-purple-900 rounded-full shadow-[0px_0px_60px_0px_rgba(151,80,175,0.20),0px_0px_30px_0px_rgba(151,80,175,0.60),inset_0px_1px_0px_0px_rgba(255,255,255,0.15)] hover:scale-105 transition-transform duration-300">
         <span className="text-xl font-black text-white uppercase font-['Barlow_Condensed'] leading-7 tracking-wide">
           ⚡ Quero Minha Dose de Energia
         </span>
