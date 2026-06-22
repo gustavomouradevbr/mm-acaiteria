@@ -9,6 +9,7 @@ import CtaSection from './components/CtaSection';
 import Footer from './components/Footer';
 import CartSidebar from './components/CartSidebar';
 import AdminDashboard from './components/AdminDashboard';
+import CustomizeModal from './components/CustomizeModal';
 
 // Importações dos webp iniciais do cardápio público
 import imgMaisPedido300 from './assets/cardapiommacaiteria/maispedidos/acai300ML.webp';
@@ -34,10 +35,14 @@ const initialProducts = [
   { id: 2, category: 'maispedidos', title: 'Açaí Classic 400ml', description: 'Morango fresco, leite condensado, leite em pó e paçoca premium.', price: 'R$ 20,00', image: imgMaisPedido400 },
   { id: 3, category: 'maispedidos', title: 'Açaí Monstro 1 Litro', description: 'O gigante da casa! Escolha até 5 acompanhamentos direto no balcão.', price: 'R$ 42,00', image: imgMaisPedido1L },
   { id: 4, category: 'maispedidos', title: 'Açaí Duplo Especial 400ml', description: 'Duas camadas generosas de açaí puro intercaladas com creme de ninho.', price: 'R$ 24,00', image: imgMaisPedidoDuplo400 },
-  { id: 5, category: 'monteseuacai', title: 'Monte seu Açaí 250ml', description: 'Tamanho perfeito para um lanche rápido. Inclui 2 acompanhamentos grátis.', price: 'R$ 13,00', image: imgMonte250 },
-  { id: 6, category: 'monteseuacai', title: 'Monte seu Açaí 300ml', description: 'A medida exata para o seu pré-treino com até 3 acompanhamentos à escolha.', price: 'R$ 16,00', image: imgMonte300 },
-  { id: 7, category: 'monteseuacai', title: 'Monte seu Açaí 500ml', description: 'Nosso campeão de vendas! Monte do seu jeito com até 4 complementos.', price: 'R$ 25,00', image: imgMonte500 },
-  { id: 8, category: 'monteseuacai', title: 'Monte seu Açaí 770ml', description: 'Para os verdadeiros amantes de açaí. Espaço de sobra para caprichar nos cremes.', price: 'R$ 34,00', image: imgMonte770 },
+  
+  // Monte seu Açaí com o de 1 Litro adicionado ao final da lista de montagem
+  { id: 5, category: 'monteseuacai', title: 'Monte seu Açaí 250ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 13,00', image: imgMonte250 },
+  { id: 6, category: 'monteseuacai', title: 'Monte seu Açaí 300ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 16,00', image: imgMonte300 },
+  { id: 7, category: 'monteseuacai', title: 'Monte seu Açaí 500ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 25,00', image: imgMonte500 },
+  { id: 8, category: 'monteseuacai', title: 'Monte seu Açaí 770ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 34,00', image: imgMonte770 },
+  { id: 18, category: 'monteseuacai', title: 'Monte seu Açaí 1 Litro', description: 'O senhor dos açaís. Monte com o máximo de cremes, frutas e acompanhamentos.', price: 'R$ 40,00', image: imgMaisPedido1L },
+
   { id: 9, category: 'combos', title: 'Combo Duplo Casal 250ml', description: 'Leve dois copos de 250ml completíssimos com leite em pó e calda de morango.', price: 'R$ 22,00', image: imgComboCasal250 },
   { id: 10, category: 'combos', title: 'Combo Duplo Turbo 300ml', description: 'Dois copos de 300ml com paçoca, banana e leite condensado para repor as energias.', price: 'R$ 28,00', image: imgComboTurbo300 },
   { id: 11, category: 'combos', title: 'Combo Super Duplo 400ml', description: 'Dois copos grandes de 400ml recheados com os melhores complementos da casa.', price: 'R$ 36,00', image: imgComboSuper400 },
@@ -64,11 +69,13 @@ function App() {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isAdminView, setIsAdminView] = useState(false);
   
-  // Controle de funcionamento ('auto' | 'open' | 'closed')
   const [storeOverride, setStoreOverride] = useState('auto');
   const [isOpenStatus, setIsOpenStatus] = useState(false);
 
-  // Calcula se o estabelecimento está aberto conforme a especificação de horário
+  // Estados do Modal de Customização
+  const [customizingProduct, setCustomizingProduct] = useState(null);
+  const [isCustomizeModalOpen, setIsCustomizeModalOpen] = useState(false);
+
   useEffect(() => {
     if (storeOverride === 'open') {
       setIsOpenStatus(true);
@@ -77,31 +84,37 @@ function App() {
     } else {
       const checkAutomaticTime = () => {
         const now = new Date();
-        const day = now.getDay(); // 0 = Domingo, 1 = Segunda, ..., 6 = Sábado
+        const day = now.getDay(); 
         const hour = now.getHours();
-
-        const isWorkingDay = day !== 1; // Terça a Domingo (Diferente de Segunda)
-        const isWorkingHour = hour >= 17 && hour < 23; // 17h às 23h
-
+        const isWorkingDay = day !== 1; 
+        const isWorkingHour = hour >= 17 && hour < 23; 
         setIsOpenStatus(isWorkingDay && isWorkingHour);
       };
-
       checkAutomaticTime();
-      const interval = setInterval(checkAutomaticTime, 60000); // Atualiza a cada minuto
+      const interval = setInterval(checkAutomaticTime, 60000);
       return () => clearInterval(interval);
     }
   }, [storeOverride]);
 
-  const handleAddToCart = (product) => {
-    setCartItems([...cartItems, product]);
-    setIsCartOpen(true); 
+  const handleAddToCartIntent = (product) => {
+    if (product.category === 'monteseuacai') {
+      setCustomizingProduct(product);
+      setIsCustomizeModalOpen(true);
+    } else {
+      setCartItems([...cartItems, product]);
+      setIsCartOpen(true);
+    }
+  };
+
+  const handleConfirmCustomization = (customizedProduct) => {
+    setCartItems([...cartItems, customizedProduct]);
+    setIsCartOpen(true);
   };
 
   const handleRemoveItem = (indexToRemove) => {
     setCartItems(cartItems.filter((_, index) => index !== indexToRemove));
   };
 
-  // Funções CRUD do Administrador
   const handleAddProduct = (newProd) => setMenuData([...menuData, newProd]);
   const handleEditProduct = (editedProd) => setMenuData(menuData.map(p => p.id === editedProd.id ? editedProd : p));
   const handleDeleteProduct = (id) => setMenuData(menuData.filter(p => p.id !== id));
@@ -128,13 +141,14 @@ function App() {
             onAddCategory={handleAddCategory}
             storeOverride={storeOverride}
             onSetStoreOverride={setStoreOverride}
+            isOpenStatus={isOpenStatus}
           />
         ) : (
           <>
             <HeroSection isOpenStatus={isOpenStatus} />
             <FeaturesSection />
             <AboutSection />
-            <MenuSection menuData={menuData} categories={categories} onAddToCart={handleAddToCart} />
+            <MenuSection menuData={menuData} categories={categories} onAddToCart={handleAddToCartIntent} />
             <TestimonialsSection />
             <CtaSection />
           </>
@@ -150,6 +164,13 @@ function App() {
         onClose={() => setIsCartOpen(false)}
         cartItems={cartItems}
         onRemoveItem={handleRemoveItem}
+      />
+
+      <CustomizeModal
+        isOpen={isCustomizeModalOpen}
+        onClose={() => setIsCustomizeModalOpen(false)}
+        product={customizingProduct}
+        onConfirm={handleConfirmCustomization}
       />
     </div>
   );
