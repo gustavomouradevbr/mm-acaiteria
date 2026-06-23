@@ -10,8 +10,9 @@ import Footer from './components/Footer';
 import CartSidebar from './components/CartSidebar';
 import AdminDashboard from './components/AdminDashboard';
 import CustomizeModal from './components/CustomizeModal';
+import AuthScreen from './components/AuthScreen';
+import CustomerDashboard from './components/CustomerDashboard';
 
-// Importações dos assets (mantidas iguais)
 import imgMaisPedido300 from './assets/cardapiommacaiteria/maispedidos/acai300ML.webp';
 import imgMaisPedido400 from './assets/cardapiommacaiteria/maispedidos/acai400ML.webp';
 import imgMaisPedido1L from './assets/cardapiommacaiteria/maispedidos/acai1LITRO.webp';
@@ -30,7 +31,6 @@ import imgPaleta1 from './assets/cardapiommacaiteria/paleta/paleta1.webp';
 import imgPaleta2 from './assets/cardapiommacaiteria/paleta/paleta2.webp';
 import imgAgua from './assets/cardapiommacaiteria/bebidas/agua.webp';
 
-// O Segredo aqui: a propriedade "limitRule" atrelada diretamente a cada produto!
 const initialProducts = [
   { id: 1, category: 'maispedidos', title: 'Açaí Tradicional 300ml', description: 'Banana fatiada, leite em pó, granola crocante e mel orgânico.', price: 'R$ 16,00', image: imgMaisPedido300, limitRule: '300ml' },
   { id: 2, category: 'maispedidos', title: 'Açaí Classic 400ml', description: 'Morango fresco, leite condensado, leite em pó e paçoca premium.', price: 'R$ 20,00', image: imgMaisPedido400, limitRule: '400ml' },
@@ -60,30 +60,34 @@ const initialCategories = [
   { id: 'extras', label: 'Paletas & Bebidas' },
 ];
 
+const initialIngredientGroups = [
+  { id: 'creams', name: '🍦 Cremes', items: ['Leite Ninho', 'Nutella Pura', 'Ovomaltine', 'Mousse de Maracujá'] },
+  { id: 'fruits', name: '🍓 Frutas', items: ['Morango Fresco', 'Banana Fatiada', 'Kiwi', 'Manga'] },
+  { id: 'complements', name: '🥜 Complementos', items: ['Leite em Pó', 'Granola Crocante', 'Paçoca Premium', 'Canudinho'] },
+];
+
 const initialLimits = [
-  { id: '250ml', label: 'Regra: Copo 250ml', creams: 1, fruits: 1, complements: 2 },
-  { id: '300ml', label: 'Regra: Copo 300ml', creams: 3, fruits: 2, complements: 3 },
-  { id: '400ml', label: 'Regra: Copo 400ml', creams: 3, fruits: 2, complements: 3 },
-  { id: '500ml', label: 'Regra: Copo 500ml', creams: 3, fruits: 3, complements: 4 },
-  { id: '600ml', label: 'Regra: Copo 600ml', creams: 3, fruits: 3, complements: 4 },
-  { id: '770ml', label: 'Regra: Copo 770ml', creams: 2, fruits: 3, complements: 5 },
-  { id: '1l', label: 'Regra: Copo 1 Litro', creams: 2, fruits: 3, complements: 5 },
+  { id: '250ml', label: 'Regra 250ml', limits: { creams: 1, fruits: 1, complements: 2 } },
+  { id: '300ml', label: 'Regra 300ml', limits: { creams: 3, fruits: 2, complements: 3 } },
+  { id: '400ml', label: 'Regra 400ml', limits: { creams: 3, fruits: 2, complements: 3 } },
+  { id: '500ml', label: 'Regra 500ml', limits: { creams: 3, fruits: 3, complements: 4 } },
+  { id: '600ml', label: 'Regra 600ml', limits: { creams: 3, fruits: 3, complements: 4 } },
+  { id: '770ml', label: 'Regra 770ml', limits: { creams: 2, fruits: 3, complements: 5 } },
+  { id: '1l',   label: 'Regra 1 Litro', limits: { creams: 2, fruits: 3, complements: 5 } },
 ];
 
 function App() {
+  const [currentView, setCurrentView] = useState('store'); // 'store' | 'login' | 'admin' | 'customer'
+  const [currentUser, setCurrentUser] = useState(null);
+
   const [menuData, setMenuData] = useState(initialProducts);
   const [categories, setCategories] = useState(initialCategories);
+  const [ingredientGroups, setIngredientGroups] = useState(initialIngredientGroups);
   const [customizationLimits, setCustomizationLimits] = useState(initialLimits);
-
-  // Novos Estados: As listas de ingredientes personalizáveis
-  const [creams, setCreams] = useState(['Leite Ninho', 'Nutella Pura', 'Ovomaltine', 'Mousse de Maracujá']);
-  const [fruits, setFruits] = useState(['Morango Fresco', 'Banana Fatiada', 'Kiwi', 'Manga']);
-  const [complements, setComplements] = useState(['Leite em Pó', 'Granola Crocante', 'Paçoca Premium', 'Canudinho', 'Confeitos de Chocolate']);
+  const [orders, setOrders] = useState([]);
 
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
-  const [isAdminView, setIsAdminView] = useState(false);
-  
   const [storeOverride, setStoreOverride] = useState('auto');
   const [isOpenStatus, setIsOpenStatus] = useState(false);
 
@@ -98,11 +102,9 @@ function App() {
     } else {
       const checkAutomaticTime = () => {
         const now = new Date();
-        const day = now.getDay(); 
+        const day = now.getDay();
         const hour = now.getHours();
-        const isWorkingDay = day !== 1; 
-        const isWorkingHour = hour >= 17 && hour < 23; 
-        setIsOpenStatus(isWorkingDay && isWorkingHour);
+        setIsOpenStatus(day !== 1 && hour >= 17 && hour < 23);
       };
       checkAutomaticTime();
       const interval = setInterval(checkAutomaticTime, 60000);
@@ -110,7 +112,8 @@ function App() {
     }
   }, [storeOverride]);
 
-  // A LÓGICA VINCULADA: Agora só abre o modal se o produto tiver uma regra de montagem ativa!
+  const scrollToMenu = () => document.getElementById('cardapio')?.scrollIntoView({ behavior: 'smooth' });
+
   const handleAddToCartIntent = (product) => {
     if (product.limitRule && product.limitRule !== 'none') {
       setCustomizingProduct(product);
@@ -126,64 +129,82 @@ function App() {
     setIsCartOpen(true);
   };
 
-  const handleRemoveItem = (indexToRemove) => {
-    setCartItems(cartItems.filter((_, index) => index !== indexToRemove));
+  const handleCheckoutOrder = () => {
+    const newOrder = {
+      id: 'B-' + Math.floor(Math.random() * 9000 + 1000),
+      items: [...cartItems],
+      total: cartItems.reduce((acc, item) => acc + parseFloat(item.price.replace('R$ ', '').replace(',', '.')), 0),
+      status: 'Em Preparo',
+      customerEmail: currentUser?.email || 'visitante@loja.com',
+      customerName: currentUser?.name || 'Visitante',
+      date: new Date().toLocaleTimeString(),
+    };
+    setOrders(prev => [newOrder, ...prev]);
+    setCartItems([]);
+    setIsCartOpen(false);
+    return newOrder;
   };
 
-  const handleAddProduct = (newProd) => setMenuData([...menuData, newProd]);
-  const handleEditProduct = (editedProd) => setMenuData(menuData.map(p => p.id === editedProd.id ? editedProd : p));
-  const handleDeleteProduct = (id) => setMenuData(menuData.filter(p => p.id !== id));
-  const handleAddCategory = (newCat) => setCategories([...categories, newCat]);
+  const handleLogin = (user) => {
+    setCurrentUser(user);
+    setCurrentView(user.role === 'admin' ? 'admin' : 'store');
+  };
 
   return (
     <div className="min-h-screen bg-zinc-950 font-sans text-gray-100 flex flex-col relative">
-      <Header 
-        cartCount={cartItems.length} 
-        onOpenCart={() => setIsCartOpen(true)} 
-        isAdminView={isAdminView}
-        onToggleAdminView={setIsAdminView}
+      <Header
+        cartCount={cartItems.length}
+        onOpenCart={() => setIsCartOpen(true)}
+        currentUser={currentUser}
+        currentView={currentView}
+        onNavigate={setCurrentView}
+        onLogout={() => { setCurrentUser(null); setCurrentView('store'); }}
       />
-      
+
       <main className="flex-grow">
-        {isAdminView ? (
-          <AdminDashboard 
+        {currentView === 'login' && <AuthScreen onLogin={handleLogin} />}
+        {currentView === 'customer' && <CustomerDashboard orders={orders} currentUser={currentUser} />}
+        {currentView === 'admin' && (
+          <AdminDashboard
             menuData={menuData}
             categories={categories}
-            onAddProduct={handleAddProduct}
-            onEditProduct={handleEditProduct}
-            onDeleteProduct={handleDeleteProduct}
-            onAddCategory={handleAddCategory}
+            onAddProduct={(p) => setMenuData([...menuData, p])}
+            onEditProduct={(p) => setMenuData(menuData.map(m => m.id === p.id ? p : m))}
+            onDeleteProduct={(id) => setMenuData(menuData.filter(m => m.id !== id))}
+            onAddCategory={(c) => setCategories([...categories, c])}
             storeOverride={storeOverride}
             onSetStoreOverride={setStoreOverride}
             isOpenStatus={isOpenStatus}
             customizationLimits={customizationLimits}
             setCustomizationLimits={setCustomizationLimits}
-            // Passando os estoques de ingredientes para o Admin editar
-            creams={creams} setCreams={setCreams}
-            fruits={fruits} setFruits={setFruits}
-            complements={complements} setComplements={setComplements}
+            ingredientGroups={ingredientGroups}
+            setIngredientGroups={setIngredientGroups}
+            orders={orders}
+            setOrders={setOrders}
           />
-        ) : (
+        )}
+        {currentView === 'store' && (
           <>
-            <HeroSection isOpenStatus={isOpenStatus} />
+            <HeroSection isOpenStatus={isOpenStatus} onScrollToMenu={scrollToMenu} />
             <FeaturesSection />
             <AboutSection />
             <MenuSection menuData={menuData} categories={categories} onAddToCart={handleAddToCartIntent} />
             <TestimonialsSection />
-            <CtaSection />
+            <CtaSection onScrollToMenu={scrollToMenu} />
           </>
         )}
       </main>
-      
-      <footer className="mt-auto">
-        <Footer />
-      </footer>
+
+      <footer className="mt-auto"><Footer /></footer>
 
       <CartSidebar
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
         cartItems={cartItems}
-        onRemoveItem={handleRemoveItem}
+        onRemoveItem={(idx) => setCartItems(cartItems.filter((_, i) => i !== idx))}
+        onCheckout={handleCheckoutOrder}
+        ingredientGroups={ingredientGroups}
+        currentUser={currentUser}
       />
 
       <CustomizeModal
@@ -192,10 +213,7 @@ function App() {
         product={customizingProduct}
         onConfirm={handleConfirmCustomization}
         limitsData={customizationLimits}
-        // Passando os estoques de ingredientes para o cliente escolher
-        availableCreams={creams}
-        availableFruits={fruits}
-        availableComplements={complements}
+        ingredientGroups={ingredientGroups}
       />
     </div>
   );

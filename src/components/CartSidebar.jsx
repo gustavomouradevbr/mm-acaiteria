@@ -1,57 +1,41 @@
 import React from 'react';
 
-const CartSidebar = ({ isOpen, onClose, cartItems, onRemoveItem }) => {
+const CartSidebar = ({ isOpen, onClose, cartItems, onRemoveItem, onCheckout, ingredientGroups, currentUser }) => {
   const total = cartItems.reduce((acc, item) => {
-    const priceNumber = parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
-    return acc + priceNumber;
+    return acc + parseFloat(item.price.replace('R$ ', '').replace(',', '.'));
   }, 0);
 
   const handleWhatsAppCheckout = () => {
     if (cartItems.length === 0) return;
 
-    const pedidoID = Math.floor(Math.random() * 9000) + 1000;
-    
-    let msg = `Olá Gustavo, seu pedido foi confirmado e está sendo preparado 🥰\n`;
-    msg += `Você pode acompanhar o progresso do seu pedido através do botão que será enviado 📱\n\n`;
-    msg += `Pedido: B-${pedidoID}\n`;
-    msg += `---------------------------------------\n`;
-    msg += ` Produtos \n\n`;
+    // Captura os itens antes de o onCheckout limpar o carrinho
+    const itemsSnapshot = [...cartItems];
+    const order = onCheckout();
 
-    cartItems.forEach(item => {
+    let msg = `Olá ${currentUser?.name || 'Cliente'}, seu pedido foi confirmado! 🥰\n`;
+    msg += `Você pode acompanhar o progresso logando no site.\n\n`;
+    msg += `Pedido: ${order.id}\n---------------------------------------\n Produtos \n\n`;
+
+    itemsSnapshot.forEach(item => {
       msg += `${item.price} 1x ${item.title.toUpperCase()}\n`;
-      
       if (item.customizations) {
-        const { creams, fruits, complements } = item.customizations;
-        
-        if (complements && complements.length > 0) {
-          msg += `   COMPLEMENTOS \n`;
-          complements.forEach(c => msg += `      1x ${c.toUpperCase()}\n`);
-        }
-        if (creams && creams.length > 0) {
-          msg += `   CREMES \n`;
-          creams.forEach(cr => msg += `      1x ${cr.toUpperCase()}\n`);
-        }
-        if (fruits && fruits.length > 0) {
-          msg += `   FRUTAS \n`;
-          fruits.forEach(f => msg += `      1x ${f.toUpperCase()}\n`);
-        }
+        Object.entries(item.customizations).forEach(([groupId, items]) => {
+          if (items.length > 0) {
+            const groupName = (ingredientGroups.find(g => g.id === groupId)?.name || groupId)
+              .replace(/[^\w\sÀ-ÿ]/g, '').trim();
+            msg += `   ${groupName.toUpperCase()}\n`;
+            items.forEach(i => msg += `      1x ${i.toUpperCase()}\n`);
+          }
+        });
       }
       msg += `\n`;
     });
 
-    msg += `---------------------------------------\n\n`;
-    msg += `R$ ${total.toFixed(2).replace('.', ',')} Total dos produtos\n`;
-    msg += `R$ 0,00 Taxa de entrega\n`;
+    msg += `---------------------------------------\n`;
     msg += `R$ ${total.toFixed(2).replace('.', ',')} Total\n`;
-    msg += `Forma de pagamento: Dinheiro\n`;
-    msg += `Valor em dinheiro: R$ ${total.toFixed(2).replace('.', ',')}\n`;
-    msg += `Troco: R$ 0,00\n`;
-    msg += `O seu pedido ainda não foi pago.\n\n`;
-    msg += `---------------------------------------\n\n`;
-    msg += `Nome: Gustavo Bezerra De Moura\n\n`;
     msg += `Pedido para retirada\n`;
 
-    const phone = "5581995212578"; 
+    const phone = '5581995212578';
     const url = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
   };
@@ -81,12 +65,16 @@ const CartSidebar = ({ isOpen, onClose, cartItems, onRemoveItem }) => {
                   </div>
                   <button onClick={() => onRemoveItem(index)} className="text-zinc-500 hover:text-red-500 font-black px-2">X</button>
                 </div>
-                
+
                 {item.customizations && (
                   <div className="text-[11px] text-zinc-500 font-mono pl-2 border-l border-fuchsia-700/40 space-y-1">
-                    {item.customizations.creams.length > 0 && <div>🍦 {item.customizations.creams.join(', ')}</div>}
-                    {item.customizations.fruits.length > 0 && <div>🍓 {item.customizations.fruits.join(', ')}</div>}
-                    {item.customizations.complements.length > 0 && <div>🥜 {item.customizations.complements.join(', ')}</div>}
+                    {Object.entries(item.customizations).map(([groupId, items]) => {
+                      if (!items || items.length === 0) return null;
+                      const group = ingredientGroups.find(g => g.id === groupId);
+                      return (
+                        <div key={groupId}>{group?.name || groupId}: {items.join(', ')}</div>
+                      );
+                    })}
                   </div>
                 )}
               </div>

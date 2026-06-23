@@ -4,7 +4,6 @@ import ProductCard from './ProductCard';
 const MenuSection = ({ menuData, categories, onAddToCart }) => {
   const [activeCategory, setActiveCategory] = useState('');
 
-  // Sincroniza a aba ativa inicial quando as categorias carregarem
   useEffect(() => {
     if (categories && categories.length > 0 && !activeCategory) {
       setActiveCategory(categories[0].id);
@@ -14,7 +13,7 @@ const MenuSection = ({ menuData, categories, onAddToCart }) => {
   const filteredItems = menuData.filter(item => item.category === activeCategory);
 
   return (
-    <section className="w-full max-w-[1024px] px-5 py-20 flex flex-col justify-start items-start mx-auto border-t border-zinc-800">
+    <section id="cardapio" className="w-full max-w-[1024px] px-5 py-20 flex flex-col justify-start items-start mx-auto border-t border-zinc-800">
       <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
         <div className="w-full md:w-72 flex flex-col justify-start items-start">
           <p className="text-lime-500 text-xs font-normal font-['Share_Tech_Mono'] uppercase leading-4 tracking-wider">Cardápio</p>
@@ -30,7 +29,6 @@ const MenuSection = ({ menuData, categories, onAddToCart }) => {
         </div>
       </div>
 
-      {/* Abas de Navegação / Filtros */}
       <div className="w-full pt-12 overflow-x-auto no-scrollbar">
         <div className="flex space-x-3 whitespace-nowrap pb-2">
           {categories.map((cat) => (
@@ -49,7 +47,6 @@ const MenuSection = ({ menuData, categories, onAddToCart }) => {
         </div>
       </div>
 
-      {/* Grid de Produtos Dinâmicos */}
       <div className="w-full pt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {filteredItems.length === 0 ? (
           <p className="text-zinc-500 text-sm font-['Barlow'] col-span-full">Nenhum produto cadastrado nesta categoria.</p>
