@@ -162,7 +162,8 @@ function App() {
       />
 
       <main className="flex-grow">
-        {currentView === 'login' && <AuthScreen onLogin={handleLogin} />}
+        {currentView === 'login' && (
+  <AuthScreen onLogin={handleLogin} onNavigate={setCurrentView} />)}
         {currentView === 'customer' && <CustomerDashboard orders={orders} currentUser={currentUser} />}
         {currentView === 'admin' && (
           <AdminDashboard
