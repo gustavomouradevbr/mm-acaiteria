@@ -1,32 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-// Agora o modal recebe os limitsData lá do App.jsx
-const CustomizeModal = ({ isOpen, onClose, product, onConfirm, limitsData }) => {
+const CustomizeModal = ({ 
+  isOpen, onClose, product, onConfirm, limitsData, 
+  availableCreams, availableFruits, availableComplements // As listas reais do sistema
+}) => {
   if (!isOpen || !product) return null;
 
-  // Caça o limite cruzando o texto do produto com o ID do limite configurado pelo admin
-  const getDynamicLimits = (prod) => {
-    const textToSearch = (prod.title + " " + prod.description).toLowerCase();
-    
-    // Procura na lista de limites do Admin se o ML está no título ou descrição
-    const matchedLimit = limitsData.find(l => textToSearch.includes(l.id));
-    if (matchedLimit) return matchedLimit;
-    
-    // Tratativa específica para o texto "1 litro" que bate com o id "1l" do painel
-    if (textToSearch.includes('1 litro')) {
-      const litroLimit = limitsData.find(l => l.id === '1l');
-      if (litroLimit) return litroLimit;
-    }
-    
-    // Padrão de segurança caso seja um produto sem tamanho definido
-    return { creams: 2, fruits: 2, complements: 3 }; 
-  };
-
-  const limits = getDynamicLimits(product);
-
-  const availableCreams = ['Leite Ninho', 'Nutella Pura', 'Ovomaltine', 'Mousse de Maracujá'];
-  const availableFruits = ['Morango Fresco', 'Banana Fatiada', 'Kiwi', 'Manga'];
-  const availableComplements = ['Leite em Pó', 'Granola Crocante', 'Paçoca Premium', 'Canudinho', 'Confeitos de Chocolate'];
+  // Encontra a regra exata atrelada ao produto criado pelo Admin
+  const limits = limitsData.find(l => l.id === product.limitRule) || { creams: 0, fruits: 0, complements: 0 };
 
   const [selectedCreams, setSelectedCreams] = useState([]);
   const [selectedFruits, setSelectedFruits] = useState([]);
@@ -66,68 +47,73 @@ const CustomizeModal = ({ isOpen, onClose, product, onConfirm, limitsData }) => 
         <div className="p-6 border-b border-zinc-800 flex justify-between items-center bg-zinc-900">
           <div>
             <h3 className="text-xl font-black font-['Barlow_Condensed'] uppercase text-gray-100">{product.title}</h3>
-            <p className="text-xs text-lime-500 font-mono mt-0.5">Personalize seu copo</p>
+            <p className="text-xs text-lime-500 font-mono mt-0.5">Personalize seu pedido</p>
           </div>
           <button onClick={onClose} className="text-zinc-400 hover:text-red-500 text-2xl">&times;</button>
         </div>
 
         <div className="p-6 overflow-y-auto space-y-6 flex-grow custom-scrollbar">
-          {/* Cremes */}
-          <div>
-            <div className="flex justify-between items-center mb-3">
-              <h4 className="text-sm font-bold uppercase text-gray-200 tracking-wider">Escolha os Cremes</h4>
-              <span className="text-xs font-mono text-fuchsia-400">Limite: {selectedCreams.length}/{limits.creams}</span>
+          
+          {/* Mostra as seções apenas se a regra permitir pelo menos 1 item */}
+          {limits.creams > 0 && (
+            <div>
+              <div className="flex justify-between items-center mb-3">
+                <h4 className="text-sm font-bold uppercase text-gray-200 tracking-wider">Escolha os Cremes</h4>
+                <span className="text-xs font-mono text-fuchsia-400">Limite: {selectedCreams.length}/{limits.creams}</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {availableCreams.map(cream => {
+                  const isChecked = selectedCreams.includes(cream);
+                  const isDisabled = !isChecked && selectedCreams.length >= limits.creams;
+                  return (
+                    <button key={cream} type="button" disabled={isDisabled} onClick={() => handleToggle(cream, selectedCreams, setSelectedCreams, limits.creams)} className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all ${isChecked ? 'bg-fuchsia-700/20 border-fuchsia-600 text-gray-100' : 'bg-zinc-900 border-zinc-800 text-zinc-400 disabled:opacity-30'}`}>
+                      {cream}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-2">
-              {availableCreams.map(cream => {
-                const isChecked = selectedCreams.includes(cream);
-                const isDisabled = !isChecked && selectedCreams.length >= limits.creams;
-                return (
-                  <button key={cream} type="button" disabled={isDisabled} onClick={() => handleToggle(cream, selectedCreams, setSelectedCreams, limits.creams)} className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all ${isChecked ? 'bg-fuchsia-700/20 border-fuchsia-600 text-gray-100' : 'bg-zinc-900 border-zinc-800 text-zinc-400 disabled:opacity-30'}`}>
-                    {cream}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          )}
 
-          {/* Frutas */}
-          <div>
-            <div className="flex justify-between items-center mb-3">
-              <h4 className="text-sm font-bold uppercase text-gray-200 tracking-wider">Escolha as Frutas</h4>
-              <span className="text-xs font-mono text-fuchsia-400">Limite: {selectedFruits.length}/{limits.fruits}</span>
+          {limits.fruits > 0 && (
+            <div>
+              <div className="flex justify-between items-center mb-3">
+                <h4 className="text-sm font-bold uppercase text-gray-200 tracking-wider">Escolha as Frutas</h4>
+                <span className="text-xs font-mono text-fuchsia-400">Limite: {selectedFruits.length}/{limits.fruits}</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {availableFruits.map(fruit => {
+                  const isChecked = selectedFruits.includes(fruit);
+                  const isDisabled = !isChecked && selectedFruits.length >= limits.fruits;
+                  return (
+                    <button key={fruit} type="button" disabled={isDisabled} onClick={() => handleToggle(fruit, selectedFruits, setSelectedFruits, limits.fruits)} className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all ${isChecked ? 'bg-fuchsia-700/20 border-fuchsia-600 text-gray-100' : 'bg-zinc-900 border-zinc-800 text-zinc-400 disabled:opacity-30'}`}>
+                      {fruit}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-2">
-              {availableFruits.map(fruit => {
-                const isChecked = selectedFruits.includes(fruit);
-                const isDisabled = !isChecked && selectedFruits.length >= limits.fruits;
-                return (
-                  <button key={fruit} type="button" disabled={isDisabled} onClick={() => handleToggle(fruit, selectedFruits, setSelectedFruits, limits.fruits)} className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all ${isChecked ? 'bg-fuchsia-700/20 border-fuchsia-600 text-gray-100' : 'bg-zinc-900 border-zinc-800 text-zinc-400 disabled:opacity-30'}`}>
-                    {fruit}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          )}
 
-          {/* Complementos */}
-          <div>
-            <div className="flex justify-between items-center mb-3">
-              <h4 className="text-sm font-bold uppercase text-gray-200 tracking-wider">Complementos</h4>
-              <span className="text-xs font-mono text-fuchsia-400">Limite: {selectedComplements.length}/{limits.complements}</span>
+          {limits.complements > 0 && (
+            <div>
+              <div className="flex justify-between items-center mb-3">
+                <h4 className="text-sm font-bold uppercase text-gray-200 tracking-wider">Complementos</h4>
+                <span className="text-xs font-mono text-fuchsia-400">Limite: {selectedComplements.length}/{limits.complements}</span>
+              </div>
+              <div className="grid grid-cols-2 gap-2">
+                {availableComplements.map(comp => {
+                  const isChecked = selectedComplements.includes(comp);
+                  const isDisabled = !isChecked && selectedComplements.length >= limits.complements;
+                  return (
+                    <button key={comp} type="button" disabled={isDisabled} onClick={() => handleToggle(comp, selectedComplements, setSelectedComplements, limits.complements)} className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all ${isChecked ? 'bg-fuchsia-700/20 border-fuchsia-600 text-gray-100' : 'bg-zinc-900 border-zinc-800 text-zinc-400 disabled:opacity-30'}`}>
+                      {comp}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-2">
-              {availableComplements.map(comp => {
-                const isChecked = selectedComplements.includes(comp);
-                const isDisabled = !isChecked && selectedComplements.length >= limits.complements;
-                return (
-                  <button key={comp} type="button" disabled={isDisabled} onClick={() => handleToggle(comp, selectedComplements, setSelectedComplements, limits.complements)} className={`p-3 rounded-xl border text-left text-xs font-semibold transition-all ${isChecked ? 'bg-fuchsia-700/20 border-fuchsia-600 text-gray-100' : 'bg-zinc-900 border-zinc-800 text-zinc-400 disabled:opacity-30'}`}>
-                    {comp}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="p-4 border-t border-zinc-800 bg-zinc-900 flex justify-end">

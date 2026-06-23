@@ -11,7 +11,7 @@ import CartSidebar from './components/CartSidebar';
 import AdminDashboard from './components/AdminDashboard';
 import CustomizeModal from './components/CustomizeModal';
 
-// Importações dos webp iniciais
+// Importações dos assets (mantidas iguais)
 import imgMaisPedido300 from './assets/cardapiommacaiteria/maispedidos/acai300ML.webp';
 import imgMaisPedido400 from './assets/cardapiommacaiteria/maispedidos/acai400ML.webp';
 import imgMaisPedido1L from './assets/cardapiommacaiteria/maispedidos/acai1LITRO.webp';
@@ -30,25 +30,26 @@ import imgPaleta1 from './assets/cardapiommacaiteria/paleta/paleta1.webp';
 import imgPaleta2 from './assets/cardapiommacaiteria/paleta/paleta2.webp';
 import imgAgua from './assets/cardapiommacaiteria/bebidas/agua.webp';
 
+// O Segredo aqui: a propriedade "limitRule" atrelada diretamente a cada produto!
 const initialProducts = [
-  { id: 1, category: 'maispedidos', title: 'Açaí Tradicional 300ml', description: 'Banana fatiada, leite em pó, granola crocante e mel orgânico.', price: 'R$ 16,00', image: imgMaisPedido300 },
-  { id: 2, category: 'maispedidos', title: 'Açaí Classic 400ml', description: 'Morango fresco, leite condensado, leite em pó e paçoca premium.', price: 'R$ 20,00', image: imgMaisPedido400 },
-  { id: 3, category: 'maispedidos', title: 'Açaí Monstro 1 Litro', description: 'O gigante da casa! Escolha até 5 acompanhamentos direto no balcão.', price: 'R$ 42,00', image: imgMaisPedido1L },
-  { id: 4, category: 'maispedidos', title: 'Açaí Duplo Especial 400ml', description: 'Duas camadas generosas de açaí puro intercaladas com creme de ninho.', price: 'R$ 24,00', image: imgMaisPedidoDuplo400 },
-  { id: 5, category: 'monteseuacai', title: 'Monte seu Açaí 250ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 13,00', image: imgMonte250 },
-  { id: 6, category: 'monteseuacai', title: 'Monte seu Açaí 300ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 16,00', image: imgMonte300 },
-  { id: 7, category: 'monteseuacai', title: 'Monte seu Açaí 500ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 25,00', image: imgMonte500 },
-  { id: 8, category: 'monteseuacai', title: 'Monte seu Açaí 770ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 34,00', image: imgMonte770 },
-  { id: 18, category: 'monteseuacai', title: 'Monte seu Açaí 1 Litro', description: 'O senhor dos açaís. Monte com o máximo de cremes, frutas e acompanhamentos.', price: 'R$ 40,00', image: imgMaisPedido1L },
-  { id: 9, category: 'combos', title: 'Combo Duplo Casal 250ml', description: 'Leve dois copos de 250ml completíssimos com leite em pó e calda de morango.', price: 'R$ 22,00', image: imgComboCasal250 },
-  { id: 10, category: 'combos', title: 'Combo Duplo Turbo 300ml', description: 'Dois copos de 300ml com paçoca, banana e leite condensado para repor as energias.', price: 'R$ 28,00', image: imgComboTurbo300 },
-  { id: 11, category: 'combos', title: 'Combo Super Duplo 400ml', description: 'Dois copos grandes de 400ml recheados com os melhores complementos da casa.', price: 'R$ 36,00', image: imgComboSuper400 },
-  { id: 12, category: 'promocoes', title: 'Promoção do Dia 01', description: 'Açaí com mousse de maracujá caseiro e gotas de chocolate meio amargo.', price: 'R$ 15,00', image: imgPromo1 },
-  { id: 13, category: 'promocoes', title: 'Combo Universitário', description: 'Açaí de 400ml + porção extra de leite em pó por um preço especial.', price: 'R$ 18,00', image: imgPromo2 },
-  { id: 14, category: 'promocoes', title: 'Trio Família', description: 'Três copos de açaí tradicionais montados para curtir o final de semana.', price: 'R$ 45,00', image: imgPromo3 },
-  { id: 15, category: 'extras', title: 'Paleta Recheada Morango', description: 'Paleta artesanal de morango com recheio cremoso de leite condensado.', price: 'R$ 9,50', image: imgPaleta1 },
-  { id: 16, category: 'extras', title: 'Paleta Ninho com Nutella', description: 'Gelato artesanal de leite ninho com recheio generoso de Nutella pura.', price: 'R$ 11,00', image: imgPaleta2 },
-  { id: 17, category: 'extras', title: 'Água Mineral 500ml', description: 'Água mineral sem gás bem gelada para refrescar.', price: 'R$ 3,50', image: imgAgua },
+  { id: 1, category: 'maispedidos', title: 'Açaí Tradicional 300ml', description: 'Banana fatiada, leite em pó, granola crocante e mel orgânico.', price: 'R$ 16,00', image: imgMaisPedido300, limitRule: '300ml' },
+  { id: 2, category: 'maispedidos', title: 'Açaí Classic 400ml', description: 'Morango fresco, leite condensado, leite em pó e paçoca premium.', price: 'R$ 20,00', image: imgMaisPedido400, limitRule: '400ml' },
+  { id: 3, category: 'maispedidos', title: 'Açaí Monstro 1 Litro', description: 'O gigante da casa! Escolha até 5 acompanhamentos direto no balcão.', price: 'R$ 42,00', image: imgMaisPedido1L, limitRule: '1l' },
+  { id: 4, category: 'maispedidos', title: 'Açaí Duplo Especial 400ml', description: 'Duas camadas generosas de açaí puro intercaladas com creme de ninho.', price: 'R$ 24,00', image: imgMaisPedidoDuplo400, limitRule: '400ml' },
+  { id: 5, category: 'monteseuacai', title: 'Monte seu Açaí 250ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 13,00', image: imgMonte250, limitRule: '250ml' },
+  { id: 6, category: 'monteseuacai', title: 'Monte seu Açaí 300ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 16,00', image: imgMonte300, limitRule: '300ml' },
+  { id: 7, category: 'monteseuacai', title: 'Monte seu Açaí 500ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 25,00', image: imgMonte500, limitRule: '500ml' },
+  { id: 8, category: 'monteseuacai', title: 'Monte seu Açaí 770ml', description: 'Personalize do seu jeito com acompanhamentos e caldas tradicionais.', price: 'R$ 34,00', image: imgMonte770, limitRule: '770ml' },
+  { id: 18, category: 'monteseuacai', title: 'Monte seu Açaí 1 Litro', description: 'O senhor dos açaís. Monte com o máximo de cremes, frutas e acompanhamentos.', price: 'R$ 40,00', image: imgMaisPedido1L, limitRule: '1l' },
+  { id: 9, category: 'combos', title: 'Combo Duplo Casal 250ml', description: 'Leve dois copos de 250ml completíssimos com leite em pó e calda de morango.', price: 'R$ 22,00', image: imgComboCasal250, limitRule: '250ml' },
+  { id: 10, category: 'combos', title: 'Combo Duplo Turbo 300ml', description: 'Dois copos de 300ml com paçoca, banana e leite condensado para repor as energias.', price: 'R$ 28,00', image: imgComboTurbo300, limitRule: '300ml' },
+  { id: 11, category: 'combos', title: 'Combo Super Duplo 400ml', description: 'Dois copos grandes de 400ml recheados com os melhores complementos da casa.', price: 'R$ 36,00', image: imgComboSuper400, limitRule: '400ml' },
+  { id: 12, category: 'promocoes', title: 'Promoção do Dia 01', description: 'Açaí com mousse de maracujá caseiro e gotas de chocolate meio amargo.', price: 'R$ 15,00', image: imgPromo1, limitRule: '300ml' },
+  { id: 13, category: 'promocoes', title: 'Combo Universitário', description: 'Açaí de 400ml + porção extra de leite em pó por um preço especial.', price: 'R$ 18,00', image: imgPromo2, limitRule: '400ml' },
+  { id: 14, category: 'promocoes', title: 'Trio Família', description: 'Três copos de açaí tradicionais montados para curtir o final de semana.', price: 'R$ 45,00', image: imgPromo3, limitRule: '300ml' },
+  { id: 15, category: 'extras', title: 'Paleta Recheada Morango', description: 'Paleta artesanal de morango com recheio cremoso de leite condensado.', price: 'R$ 9,50', image: imgPaleta1, limitRule: 'none' },
+  { id: 16, category: 'extras', title: 'Paleta Ninho com Nutella', description: 'Gelato artesanal de leite ninho com recheio generoso de Nutella pura.', price: 'R$ 11,00', image: imgPaleta2, limitRule: 'none' },
+  { id: 17, category: 'extras', title: 'Água Mineral 500ml', description: 'Água mineral sem gás bem gelada para refrescar.', price: 'R$ 3,50', image: imgAgua, limitRule: 'none' },
 ];
 
 const initialCategories = [
@@ -59,23 +60,25 @@ const initialCategories = [
   { id: 'extras', label: 'Paletas & Bebidas' },
 ];
 
-// O Novo Estado: Regras baseadas na sua imagem de limites
 const initialLimits = [
-  { id: '250ml', label: 'Copos de 250ml', creams: 1, fruits: 1, complements: 2 },
-  { id: '300ml', label: 'Copos de 300ml', creams: 3, fruits: 2, complements: 3 },
-  { id: '400ml', label: 'Copos de 400ml', creams: 3, fruits: 2, complements: 3 },
-  { id: '500ml', label: 'Copos de 500ml', creams: 3, fruits: 3, complements: 4 },
-  { id: '600ml', label: 'Copos de 600ml', creams: 3, fruits: 3, complements: 4 },
-  { id: '770ml', label: 'Copos de 770ml', creams: 2, fruits: 3, complements: 5 },
-  { id: '1l', label: 'Copos de 1 Litro', creams: 2, fruits: 3, complements: 5 },
+  { id: '250ml', label: 'Regra: Copo 250ml', creams: 1, fruits: 1, complements: 2 },
+  { id: '300ml', label: 'Regra: Copo 300ml', creams: 3, fruits: 2, complements: 3 },
+  { id: '400ml', label: 'Regra: Copo 400ml', creams: 3, fruits: 2, complements: 3 },
+  { id: '500ml', label: 'Regra: Copo 500ml', creams: 3, fruits: 3, complements: 4 },
+  { id: '600ml', label: 'Regra: Copo 600ml', creams: 3, fruits: 3, complements: 4 },
+  { id: '770ml', label: 'Regra: Copo 770ml', creams: 2, fruits: 3, complements: 5 },
+  { id: '1l', label: 'Regra: Copo 1 Litro', creams: 2, fruits: 3, complements: 5 },
 ];
 
 function App() {
   const [menuData, setMenuData] = useState(initialProducts);
   const [categories, setCategories] = useState(initialCategories);
-  
-  // O Estado das Regras de Limites
   const [customizationLimits, setCustomizationLimits] = useState(initialLimits);
+
+  // Novos Estados: As listas de ingredientes personalizáveis
+  const [creams, setCreams] = useState(['Leite Ninho', 'Nutella Pura', 'Ovomaltine', 'Mousse de Maracujá']);
+  const [fruits, setFruits] = useState(['Morango Fresco', 'Banana Fatiada', 'Kiwi', 'Manga']);
+  const [complements, setComplements] = useState(['Leite em Pó', 'Granola Crocante', 'Paçoca Premium', 'Canudinho', 'Confeitos de Chocolate']);
 
   const [cartItems, setCartItems] = useState([]);
   const [isCartOpen, setIsCartOpen] = useState(false);
@@ -107,8 +110,9 @@ function App() {
     }
   }, [storeOverride]);
 
+  // A LÓGICA VINCULADA: Agora só abre o modal se o produto tiver uma regra de montagem ativa!
   const handleAddToCartIntent = (product) => {
-    if (product.category !== 'extras') {
+    if (product.limitRule && product.limitRule !== 'none') {
       setCustomizingProduct(product);
       setIsCustomizeModalOpen(true);
     } else {
@@ -154,6 +158,10 @@ function App() {
             isOpenStatus={isOpenStatus}
             customizationLimits={customizationLimits}
             setCustomizationLimits={setCustomizationLimits}
+            // Passando os estoques de ingredientes para o Admin editar
+            creams={creams} setCreams={setCreams}
+            fruits={fruits} setFruits={setFruits}
+            complements={complements} setComplements={setComplements}
           />
         ) : (
           <>
@@ -184,6 +192,10 @@ function App() {
         product={customizingProduct}
         onConfirm={handleConfirmCustomization}
         limitsData={customizationLimits}
+        // Passando os estoques de ingredientes para o cliente escolher
+        availableCreams={creams}
+        availableFruits={fruits}
+        availableComplements={complements}
       />
     </div>
   );

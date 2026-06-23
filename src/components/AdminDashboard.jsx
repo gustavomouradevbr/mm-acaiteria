@@ -3,13 +3,21 @@ import React, { useState } from 'react';
 const AdminDashboard = ({ 
   menuData, categories, onAddProduct, onEditProduct, onDeleteProduct, onAddCategory,
   storeOverride, onSetStoreOverride, isOpenStatus,
-  customizationLimits, setCustomizationLimits // Recebendo os limites
+  customizationLimits, setCustomizationLimits,
+  creams, setCreams, fruits, setFruits, complements, setComplements
 }) => {
   const [activeTab, setActiveTab] = useState('products');
   const [editingId, setEditingId] = useState(null);
-  const [productForm, setProductForm] = useState({ title: '', description: '', price: '', category: 'maispedidos', image: '' });
+  
+  // ATENÇÃO: O formulário agora inclui limitRule por padrão como 'none'
+  const [productForm, setProductForm] = useState({ title: '', description: '', price: '', category: 'maispedidos', image: '', limitRule: 'none' });
   const [newCatName, setNewCatName] = useState('');
   const [newCatId, setNewCatId] = useState('');
+
+  // Estados para os novos ingredientes
+  const [newCream, setNewCream] = useState('');
+  const [newFruit, setNewFruit] = useState('');
+  const [newComplement, setNewComplement] = useState('');
 
   const handleImageUpload = (e) => {
     const file = e.target.files[0];
@@ -30,12 +38,15 @@ const AdminDashboard = ({
     } else {
       onAddProduct({ id: Date.now(), ...productForm });
     }
-    setProductForm({ title: '', description: '', price: '', category: 'maispedidos', image: '' });
+    setProductForm({ title: '', description: '', price: '', category: 'maispedidos', image: '', limitRule: 'none' });
   };
 
   const startEdit = (product) => {
     setEditingId(product.id);
-    setProductForm({ title: product.title, description: product.description, price: product.price, category: product.category, image: product.image });
+    setProductForm({ 
+      title: product.title, description: product.description, price: product.price, 
+      category: product.category, image: product.image, limitRule: product.limitRule || 'none' 
+    });
   };
 
   const handleCategorySubmit = (e) => {
@@ -46,12 +57,16 @@ const AdminDashboard = ({
     setNewCatId('');
   };
 
-  // Função para o Administrador atualizar as regras de limites na hora
   const handleUpdateLimit = (index, field, value) => {
     const newLimits = [...customizationLimits];
     newLimits[index][field] = value;
     setCustomizationLimits(newLimits);
   };
+
+  // Funções para adicionar ingredientes
+  const handleAddCream = () => { if(newCream.trim()){ setCreams([...creams, newCream]); setNewCream(''); }};
+  const handleAddFruit = () => { if(newFruit.trim()){ setFruits([...fruits, newFruit]); setNewFruit(''); }};
+  const handleAddComplement = () => { if(newComplement.trim()){ setComplements([...complements, newComplement]); setNewComplement(''); }};
 
   return (
     <section className="w-full max-w-[1024px] px-5 py-12 mx-auto flex-grow font-['Barlow']">
@@ -77,59 +92,79 @@ const AdminDashboard = ({
         </div>
       </div>
 
-      {/* Abas */}
       <div className="flex space-x-4 mb-8 border-b border-zinc-800 pb-2 overflow-x-auto no-scrollbar">
         <button onClick={() => setActiveTab('products')} className={`whitespace-nowrap pb-2 text-lg font-bold font-['Barlow_Condensed'] uppercase tracking-wide ${activeTab === 'products' ? 'text-lime-500 border-b-2 border-lime-500' : 'text-zinc-500'}`}>🍔 Produtos</button>
         <button onClick={() => setActiveTab('categories')} className={`whitespace-nowrap pb-2 text-lg font-bold font-['Barlow_Condensed'] uppercase tracking-wide ${activeTab === 'categories' ? 'text-lime-500 border-b-2 border-lime-500' : 'text-zinc-500'}`}>📁 Categorias</button>
-        <button onClick={() => setActiveTab('limits')} className={`whitespace-nowrap pb-2 text-lg font-bold font-['Barlow_Condensed'] uppercase tracking-wide ${activeTab === 'limits' ? 'text-lime-500 border-b-2 border-lime-500' : 'text-zinc-500'}`}>⚖️ Regras de Limites</button>
+        <button onClick={() => setActiveTab('limits')} className={`whitespace-nowrap pb-2 text-lg font-bold font-['Barlow_Condensed'] uppercase tracking-wide ${activeTab === 'limits' ? 'text-lime-500 border-b-2 border-lime-500' : 'text-zinc-500'}`}>⚖️ Regras & Ingredientes</button>
       </div>
 
-      {/* Aba de Produtos */}
       {activeTab === 'products' && (
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <form onSubmit={handleProductSubmit} className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 h-fit">
             <h3 className="text-xl font-black font-['Barlow_Condensed'] uppercase text-gray-100 mb-4">{editingId ? '📝 Editar Produto' : '✨ Novo Produto'}</h3>
             <div className="space-y-4">
               <div>
-                <label className="block text-xs text-zinc-400 mb-2 uppercase">Imagem do Produto</label>
+                <label className="block text-xs text-zinc-400 mb-2 uppercase">Imagem</label>
                 <div className="flex items-center gap-4">
                   {productForm.image ? (
                     <div className="relative w-20 h-20 rounded-xl overflow-hidden border-2 border-lime-500 flex-shrink-0">
                       <img src={productForm.image} alt="Preview" className="w-full h-full object-cover" />
-                      <button type="button" onClick={() => setProductForm({...productForm, image: ''})} className="absolute top-1 right-1 bg-black/60 rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-500">×</button>
+                      <button type="button" onClick={() => setProductForm({...productForm, image: ''})} className="absolute top-1 right-1 bg-black/60 rounded-full w-5 h-5 flex items-center justify-center text-xs hover:bg-red-500 text-white">×</button>
                     </div>
                   ) : (
                     <div className="w-20 h-20 rounded-xl border border-dashed border-zinc-600 bg-zinc-950 flex items-center justify-center flex-shrink-0"><span className="text-2xl opacity-40">📷</span></div>
                   )}
                   <div className="flex-grow">
                     <input type="file" accept="image/*" onChange={handleImageUpload} id="file-upload" className="hidden"/>
-                    <label htmlFor="file-upload" className="cursor-pointer inline-block px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-sm font-semibold rounded-lg transition-colors border border-zinc-700">Escolher do Computador</label>
+                    <label htmlFor="file-upload" className="cursor-pointer inline-block px-4 py-2 bg-zinc-800 hover:bg-zinc-700 text-sm font-semibold rounded-lg transition-colors border border-zinc-700">Upload</label>
                   </div>
                 </div>
               </div>
-              <div><label className="block text-xs text-zinc-400 mb-1 uppercase">Título do Produto</label><input type="text" value={productForm.title} onChange={e => setProductForm({...productForm, title: e.target.value})} className="w-full bg-zinc-950 border border-zinc-800 rounded-lg p-2.5 text-sm text-gray-100 focus:border-fuchsia-700 outline-none"/></div>
-              <div><label className="block text-xs text-zinc-400 mb-1 uppercase">Descrição / Ingredientes</label><textarea value={productForm.description} onChange={e => setProductForm({...productForm, description: e.target.value})} className="w-full bg-zinc-950 border border-zinc-800 rounded-lg p-2.5 text-sm text-gray-100 focus:border-fuchsia-700 outline-none h-20 resize-none"/></div>
+              <div><label className="block text-xs text-zinc-400 mb-1 uppercase">Título</label><input type="text" value={productForm.title} onChange={e => setProductForm({...productForm, title: e.target.value})} className="w-full bg-zinc-950 border border-zinc-800 rounded-lg p-2.5 text-sm text-gray-100 focus:border-fuchsia-700 outline-none"/></div>
+              <div><label className="block text-xs text-zinc-400 mb-1 uppercase">Descrição</label><textarea value={productForm.description} onChange={e => setProductForm({...productForm, description: e.target.value})} className="w-full bg-zinc-950 border border-zinc-800 rounded-lg p-2.5 text-sm text-gray-100 focus:border-fuchsia-700 outline-none h-16 resize-none"/></div>
+              
               <div className="grid grid-cols-2 gap-4">
                 <div><label className="block text-xs text-zinc-400 mb-1 uppercase">Preço (R$)</label><input type="text" value={productForm.price} onChange={e => setProductForm({...productForm, price: e.target.value})} className="w-full bg-zinc-950 border border-zinc-800 rounded-lg p-2.5 text-sm text-gray-100 focus:border-fuchsia-700 outline-none"/></div>
                 <div>
                   <label className="block text-xs text-zinc-400 mb-1 uppercase">Categoria</label>
-                  <select value={productForm.category} onChange={e => setProductForm({...productForm, category: e.target.value})} className="w-full bg-zinc-950 border border-zinc-800 rounded-lg p-2.5 text-sm text-gray-100 focus:border-fuchsia-700 outline-none">
+                  <select value={productForm.category} onChange={e => setProductForm({...productForm, category: e.target.value})} className="w-full bg-zinc-950 border border-zinc-800 rounded-lg p-2.5 text-sm text-gray-100 outline-none">
                     {categories.map(cat => <option key={cat.id} value={cat.id}>{cat.label}</option>)}
                   </select>
                 </div>
               </div>
+
+              {/* O NOVO VÍNCULO DE REGRA DO PRODUTO */}
+              <div>
+                <label className="block text-xs text-fuchsia-400 font-bold mb-1 uppercase">Regra de Montagem</label>
+                <select value={productForm.limitRule} onChange={e => setProductForm({...productForm, limitRule: e.target.value})} className="w-full bg-zinc-950 border border-fuchsia-700/50 rounded-lg p-2.5 text-sm text-gray-100 focus:border-fuchsia-500 outline-none">
+                  <option value="none">🚫 Venda Direta (Sem Personalização)</option>
+                  {customizationLimits.map(l => <option key={l.id} value={l.id}>{l.label}</option>)}
+                </select>
+                <p className="text-[10px] text-zinc-500 mt-1">Defina se este produto abrirá o modal de complementos ao ser clicado.</p>
+              </div>
+
               <button type="submit" className="w-full py-3 bg-lime-500 hover:bg-lime-400 font-bold font-['Barlow_Condensed'] uppercase text-zinc-950 rounded-xl transition-colors">{editingId ? 'Salvar Alterações' : 'Adicionar ao Cardápio'}</button>
-              {editingId && <button type="button" onClick={() => { setEditingId(null); setProductForm({ title: '', description: '', price: '', category: 'maispedidos', image: '' }); }} className="w-full py-2 bg-zinc-800 text-zinc-400 font-bold font-['Barlow_Condensed'] uppercase rounded-xl transition-colors">Cancelar Edição</button>}
+              {editingId && <button type="button" onClick={() => { setEditingId(null); setProductForm({ title: '', description: '', price: '', category: 'maispedidos', image: '', limitRule: 'none' }); }} className="w-full py-2 bg-zinc-800 text-zinc-400 font-bold font-['Barlow_Condensed'] uppercase rounded-xl transition-colors">Cancelar Edição</button>}
             </div>
           </form>
-          <div className="lg:col-span-2 space-y-3 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
+
+          <div className="lg:col-span-2 space-y-3 max-h-[700px] overflow-y-auto pr-2 custom-scrollbar">
             {menuData.map(product => {
               const currentCat = categories.find(c => c.id === product.category);
+              const rule = customizationLimits.find(l => l.id === product.limitRule);
               return (
                 <div key={product.id} className="bg-zinc-900 p-4 rounded-xl border border-zinc-800 flex justify-between items-center gap-4">
                   <div className="flex items-center gap-4">
                     <img src={product.image || 'https://images.unsplash.com/photo-1526424382096-74a93e105682?q=80&w=100'} alt="" className="w-14 h-14 object-cover rounded-lg border border-zinc-800" />
-                    <div><h4 className="text-gray-100 font-bold leading-tight">{product.title}</h4><p className="text-zinc-500 text-xs font-mono mt-0.5 uppercase">{currentCat ? currentCat.label : product.category} · <span className="text-lime-500">{product.price}</span></p></div>
+                    <div>
+                      <h4 className="text-gray-100 font-bold leading-tight">{product.title}</h4>
+                      <p className="text-zinc-500 text-xs font-mono mt-0.5 uppercase mb-1">
+                        {currentCat ? currentCat.label : product.category} · <span className="text-lime-500">{product.price}</span>
+                      </p>
+                      <span className={`text-[10px] px-2 py-0.5 rounded-md ${product.limitRule !== 'none' ? 'bg-fuchsia-900/30 text-fuchsia-400' : 'bg-zinc-800 text-zinc-500'}`}>
+                        {product.limitRule !== 'none' ? `Vinculado: ${rule?.label}` : 'Venda Direta'}
+                      </span>
+                    </div>
                   </div>
                   <div className="flex gap-2">
                     <button onClick={() => startEdit(product)} className="px-3 py-1.5 bg-zinc-800 hover:bg-zinc-700 text-violet-300 text-xs rounded-lg font-bold uppercase">Editar</button>
@@ -142,7 +177,6 @@ const AdminDashboard = ({
         </div>
       )}
 
-      {/* Aba de Categorias */}
       {activeTab === 'categories' && (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <form onSubmit={handleCategorySubmit} className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 h-fit">
@@ -162,38 +196,91 @@ const AdminDashboard = ({
         </div>
       )}
 
-      {/* A Nova Aba de Limites */}
       {activeTab === 'limits' && (
-        <div className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 overflow-x-auto custom-scrollbar">
-          <h3 className="text-xl font-black font-['Barlow_Condensed'] uppercase text-gray-100 mb-2">⚖️ Regras de Montagem Dinâmicas</h3>
-          <p className="text-zinc-400 text-sm mb-6 font-['Barlow']">Altere a quantidade máxima de itens que o cliente pode escolher no modal de acordo com o ML do copo. As alterações afetam o site inteiro imediatamente.</p>
-          
-          <table className="w-full text-left border-collapse min-w-[600px]">
-            <thead>
-              <tr className="border-b border-zinc-800 text-fuchsia-500 text-xs font-mono uppercase tracking-wider">
-                <th className="pb-3 pr-4">Identificador (Copo)</th>
-                <th className="pb-3 px-4 text-center">Máx. Cremes</th>
-                <th className="pb-3 px-4 text-center">Máx. Frutas</th>
-                <th className="pb-3 pl-4 text-center">Máx. Acompanhamentos</th>
-              </tr>
-            </thead>
-            <tbody>
-              {customizationLimits.map((limit, index) => (
-                <tr key={limit.id} className="border-b border-zinc-800/50 hover:bg-white/[0.02] transition-colors">
-                  <td className="py-4 pr-4 font-bold text-gray-200">{limit.label}</td>
-                  <td className="py-4 px-4 text-center">
-                    <input type="number" min="0" max="15" value={limit.creams} onChange={(e) => handleUpdateLimit(index, 'creams', parseInt(e.target.value) || 0)} className="w-16 bg-zinc-950 border border-zinc-700 rounded-md p-1.5 text-center text-sm focus:border-lime-500 outline-none text-lime-500 font-bold" />
-                  </td>
-                  <td className="py-4 px-4 text-center">
-                    <input type="number" min="0" max="15" value={limit.fruits} onChange={(e) => handleUpdateLimit(index, 'fruits', parseInt(e.target.value) || 0)} className="w-16 bg-zinc-950 border border-zinc-700 rounded-md p-1.5 text-center text-sm focus:border-lime-500 outline-none text-lime-500 font-bold" />
-                  </td>
-                  <td className="py-4 pl-4 text-center">
-                    <input type="number" min="0" max="15" value={limit.complements} onChange={(e) => handleUpdateLimit(index, 'complements', parseInt(e.target.value) || 0)} className="w-16 bg-zinc-950 border border-zinc-700 rounded-md p-1.5 text-center text-sm focus:border-lime-500 outline-none text-lime-500 font-bold" />
-                  </td>
+        <div className="space-y-8">
+          {/* Editor de Limites */}
+          <div className="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 overflow-x-auto custom-scrollbar">
+            <h3 className="text-xl font-black font-['Barlow_Condensed'] uppercase text-gray-100 mb-2">⚖️ Regras de Montagem (Por Vinculação)</h3>
+            <p className="text-zinc-400 text-sm mb-6 font-['Barlow']">Atualize a matemática dos limites para os copos. Quando criar um produto novo na aba "Produtos", você escolherá qual destas regras ele vai seguir.</p>
+            
+            <table className="w-full text-left border-collapse min-w-[600px]">
+              <thead>
+                <tr className="border-b border-zinc-800 text-fuchsia-500 text-xs font-mono uppercase tracking-wider">
+                  <th className="pb-3 pr-4">Regra Identificadora</th>
+                  <th className="pb-3 px-4 text-center">Máx. Cremes</th>
+                  <th className="pb-3 px-4 text-center">Máx. Frutas</th>
+                  <th className="pb-3 pl-4 text-center">Máx. Acompanhamentos</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {customizationLimits.map((limit, index) => (
+                  <tr key={limit.id} className="border-b border-zinc-800/50 hover:bg-white/[0.02] transition-colors">
+                    <td className="py-4 pr-4 font-bold text-gray-200">{limit.label}</td>
+                    <td className="py-4 px-4 text-center">
+                      <input type="number" min="0" max="15" value={limit.creams} onChange={(e) => handleUpdateLimit(index, 'creams', parseInt(e.target.value) || 0)} className="w-16 bg-zinc-950 border border-zinc-700 rounded-md p-1.5 text-center text-sm focus:border-lime-500 outline-none text-lime-500 font-bold" />
+                    </td>
+                    <td className="py-4 px-4 text-center">
+                      <input type="number" min="0" max="15" value={limit.fruits} onChange={(e) => handleUpdateLimit(index, 'fruits', parseInt(e.target.value) || 0)} className="w-16 bg-zinc-950 border border-zinc-700 rounded-md p-1.5 text-center text-sm focus:border-lime-500 outline-none text-lime-500 font-bold" />
+                    </td>
+                    <td className="py-4 pl-4 text-center">
+                      <input type="number" min="0" max="15" value={limit.complements} onChange={(e) => handleUpdateLimit(index, 'complements', parseInt(e.target.value) || 0)} className="w-16 bg-zinc-950 border border-zinc-700 rounded-md p-1.5 text-center text-sm focus:border-lime-500 outline-none text-lime-500 font-bold" />
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+
+          {/* Editor Global de Ingredientes */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Cremes */}
+            <div className="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 flex flex-col h-[400px]">
+              <h4 className="font-bold font-['Barlow_Condensed'] text-xl uppercase mb-4 text-gray-100">🍦 Cremes Disponíveis</h4>
+              <ul className="space-y-2 mb-4 overflow-y-auto flex-grow custom-scrollbar">
+                {creams.map((c, i) => (
+                  <li key={i} className="flex justify-between items-center bg-zinc-950 p-2.5 rounded-lg border border-zinc-800 text-sm font-semibold text-zinc-300">
+                    {c} <button onClick={() => setCreams(creams.filter((_, idx) => idx !== i))} className="text-red-500 hover:bg-red-500/20 px-2 rounded font-bold transition-colors">X</button>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-2 pt-3 border-t border-zinc-800">
+                <input value={newCream} onChange={e => setNewCream(e.target.value)} placeholder="Novo creme..." className="flex-grow bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-lime-500" />
+                <button onClick={handleAddCream} className="bg-lime-500 hover:bg-lime-400 text-zinc-950 px-4 rounded-lg font-black">+</button>
+              </div>
+            </div>
+
+            {/* Frutas */}
+            <div className="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 flex flex-col h-[400px]">
+              <h4 className="font-bold font-['Barlow_Condensed'] text-xl uppercase mb-4 text-gray-100">🍓 Frutas Disponíveis</h4>
+              <ul className="space-y-2 mb-4 overflow-y-auto flex-grow custom-scrollbar">
+                {fruits.map((f, i) => (
+                  <li key={i} className="flex justify-between items-center bg-zinc-950 p-2.5 rounded-lg border border-zinc-800 text-sm font-semibold text-zinc-300">
+                    {f} <button onClick={() => setFruits(fruits.filter((_, idx) => idx !== i))} className="text-red-500 hover:bg-red-500/20 px-2 rounded font-bold transition-colors">X</button>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-2 pt-3 border-t border-zinc-800">
+                <input value={newFruit} onChange={e => setNewFruit(e.target.value)} placeholder="Nova fruta..." className="flex-grow bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-lime-500" />
+                <button onClick={handleAddFruit} className="bg-lime-500 hover:bg-lime-400 text-zinc-950 px-4 rounded-lg font-black">+</button>
+              </div>
+            </div>
+
+            {/* Complementos */}
+            <div className="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 flex flex-col h-[400px]">
+              <h4 className="font-bold font-['Barlow_Condensed'] text-xl uppercase mb-4 text-gray-100">🥜 Complementos</h4>
+              <ul className="space-y-2 mb-4 overflow-y-auto flex-grow custom-scrollbar">
+                {complements.map((c, i) => (
+                  <li key={i} className="flex justify-between items-center bg-zinc-950 p-2.5 rounded-lg border border-zinc-800 text-sm font-semibold text-zinc-300">
+                    {c} <button onClick={() => setComplements(complements.filter((_, idx) => idx !== i))} className="text-red-500 hover:bg-red-500/20 px-2 rounded font-bold transition-colors">X</button>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-2 pt-3 border-t border-zinc-800">
+                <input value={newComplement} onChange={e => setNewComplement(e.target.value)} placeholder="Novo item..." className="flex-grow bg-zinc-950 border border-zinc-800 rounded-lg px-3 py-2 text-sm outline-none focus:border-lime-500" />
+                <button onClick={handleAddComplement} className="bg-lime-500 hover:bg-lime-400 text-zinc-950 px-4 rounded-lg font-black">+</button>
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </section>
